@@ -1,16 +1,16 @@
-package diaryApplication.diary.domain.mem_stic_rel;
+package diaryApplication.diary.domain.mem_emot_rel;
 
 import lombok.Getter;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "mem_stic_rel")
+@Table(name = "mem_emot_rel")
 @Getter
 public class Relation {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "mem_stic_rel_id")
+    @Column(name = "mem_emot_rel_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -19,7 +19,7 @@ public class Relation {
     private Long memberId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "sticker_id")
-    @Column(name = "sticker_id")
-    private Long stickerId;
+    @JoinColumn(name = "emoticon_id")
+    @Column(name = "emoticon_id")
+    private Long emoticonId;
 }

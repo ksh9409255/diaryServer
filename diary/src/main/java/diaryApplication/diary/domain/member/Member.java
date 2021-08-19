@@ -14,7 +14,6 @@ public class Member {
     private Long id;
     private String nickname;
 
-    @OneToMany(mappedBy = "category_id")
     @Column(name = "category_id")
     private int categoryId;
 }
