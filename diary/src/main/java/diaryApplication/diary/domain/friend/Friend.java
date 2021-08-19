@@ -14,8 +14,8 @@ public class Friend {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long userId_1;
-    private Long userId_2;
+    private Long memberId_1;
+    private Long memberId_2;
     private Long targetId;
     private boolean accept;
 
