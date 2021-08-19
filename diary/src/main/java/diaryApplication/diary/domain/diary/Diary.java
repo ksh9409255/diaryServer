@@ -10,6 +10,7 @@ import java.util.Date;
 public class Diary {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "diary_id",nullable = false,unique = true)
     private Long id;
     private boolean isPublic;
 
