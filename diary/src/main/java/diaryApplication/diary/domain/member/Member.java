@@ -1,6 +1,7 @@
 package diaryApplication.diary.domain.member;
 
 
+import diaryApplication.diary.domain.category.Category;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -14,5 +15,5 @@ public class Member {
     private Long id;
     private String nickname;
 
-    private int categoryId;
+    private Category categoryId;
 }
