@@ -12,10 +12,4 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
     private String nickname;
-
-//    @OneToMany(mappedBy = "categoryId")
-//    private List<CateRelation> categoryId = new ArrayList<>();
-
-//    @OneToMany(mappedBy = "emoticonId")
-//    private List<EmotiRelation> emoticonId = new ArrayList<>();
 }
