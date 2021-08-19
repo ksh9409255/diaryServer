@@ -5,6 +5,8 @@ import diaryApplication.diary.domain.category.Category;
 import lombok.Getter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -16,6 +18,6 @@ public class Member {
     private String nickname;
 
     @OneToMany(mappedBy = "category_id")
-    private Category categoryId;
+    private List<Category> categoryId = new ArrayList<>();
 
 }
