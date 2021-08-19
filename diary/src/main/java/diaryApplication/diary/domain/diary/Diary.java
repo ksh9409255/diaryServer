@@ -10,9 +10,8 @@ import java.util.Date;
 @Entity
 @Getter
 public class Diary {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "diary_id")
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private boolean isPublic;
 

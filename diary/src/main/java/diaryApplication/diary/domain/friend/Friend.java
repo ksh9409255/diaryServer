@@ -11,8 +11,7 @@ import javax.persistence.Id;
 @Getter
 public class Friend {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long memberId_1;
     private Long memberId_2;

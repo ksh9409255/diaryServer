@@ -1,4 +1,4 @@
-package diaryApplication.diary.domain.mem_emot_rel;
+package diaryApplication.diary.domain.member_emoticon;
 
 import diaryApplication.diary.domain.emoticon.Emoticon;
 import diaryApplication.diary.domain.member.Member;
@@ -7,16 +7,15 @@ import lombok.Getter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "mem_emoti_rel")
+@Table(name = "member_emoticon")
 @Getter
-public class EmotiRelation {
+public class MemberEmoticonRelation {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "mem_emoti_rel_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id") // JoinColumn은 FK 이름
+    @JoinColumn(name = "member_id")
     private Member memberId;
 
     @ManyToOne(fetch = FetchType.LAZY)

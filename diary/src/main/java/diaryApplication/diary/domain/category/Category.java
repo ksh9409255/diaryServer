@@ -11,11 +11,10 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 public class Category {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")
     private int id;
-
     private String name;
 
     public Category(String name) {

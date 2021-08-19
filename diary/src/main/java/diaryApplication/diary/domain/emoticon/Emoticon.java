@@ -11,8 +11,8 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 public class Emoticon {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "emoticon_id")
     private int id;
 
