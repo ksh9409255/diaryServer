@@ -13,7 +13,7 @@ public class Emoticon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "emoticon_id")
-    private int id;
+    private Long id;
 
     private String name;
 
@@ -23,7 +23,7 @@ public class Emoticon {
     private String description;
 
     @Builder
-    public Emoticon(int id, String name, int categoryId, String description) {
+    public Emoticon(Long id, String name, int categoryId, String description) {
         this.id = id;
         this.name = name;
         this.categoryId = categoryId;
