@@ -17,10 +17,14 @@ class EmoticonServiceTest {
     @Autowired
     EmoticonService emoticonService;
 
+    @Autowired
+    CategoryService categoryService;
+
     @Test
     @Transactional
     void register() {
-        CategoryDto category = new CategoryDto(2,"potato");
+        CategoryDto category = new CategoryDto(1,"potato");
+        categoryService.register(category);
         EmoticonDto emoticonDto = new EmoticonDto("angry potato",category,"angry");
         emoticonService.register(emoticonDto);
     }
