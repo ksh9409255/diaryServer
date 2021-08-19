@@ -12,13 +12,12 @@ import javax.persistence.*;
 public class Emoticon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "emoticon_id",nullable = false,unique = true)
+    @Column(name = "emoticon_id")
     private int id;
 
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "category_id",nullable = false)
     @JoinColumn(name = "category_id")
     private int categoryId;
     private String description;

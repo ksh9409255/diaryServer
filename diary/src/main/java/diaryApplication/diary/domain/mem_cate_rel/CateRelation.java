@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "mem_cate_rel")
 @Getter
-public class Relation {
+public class CateRelation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "mem_cate_rel_id",nullable = false,unique = true)
@@ -15,11 +15,9 @@ public class Relation {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="member_id")
-    @Column(name = "member_id")
     private Long memberId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="category_id")
-    @Column(name = "category_id")
     private int categoryId;
 }

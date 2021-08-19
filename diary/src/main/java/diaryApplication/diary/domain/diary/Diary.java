@@ -22,12 +22,10 @@ public class Diary {
     private Date date;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "emoticon_id",nullable = false)
     @JoinColumn(name = "emoticon_id")
     private int emoticonId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "member_id",nullable = false)
     @JoinColumn(name = "member_id")
     private Long memberId;
 }
