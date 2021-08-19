@@ -24,7 +24,8 @@ public class Emoticon {
     private String description;
 
     @Builder
-    public Emoticon(String name, Category categoryId, String description) {
+    public Emoticon(int id, String name, Category categoryId, String description) {
+        this.id = id;
         this.name = name;
         this.categoryId = categoryId;
         this.description = description;

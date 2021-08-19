@@ -1,6 +1,7 @@
 package diaryApplication.diary.domain.emoticon;
 
 import diaryApplication.diary.domain.category.Category;
+import diaryApplication.diary.domain.category.CategoryDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -8,10 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class EmoticonDto {
     private String name;
-    private Category categoryId;
+    private CategoryDto categoryId;
     private String description;
 
-    public EmoticonDto(String name, Category categoryId, String description) {
+    public EmoticonDto(String name, CategoryDto categoryId, String description) {
         this.name = name;
         this.categoryId = categoryId;
         this.description = description;
@@ -20,7 +21,7 @@ public class EmoticonDto {
     public Emoticon toEntity(){
         return Emoticon.builder()
                 .name(name)
-                .categoryId(categoryId)
+                .categoryId(categoryId.toEntity())
                 .description(description)
                 .build();
     }
