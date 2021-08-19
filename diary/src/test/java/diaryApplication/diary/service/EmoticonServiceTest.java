@@ -1,5 +1,6 @@
 package diaryApplication.diary.service;
 
+import diaryApplication.diary.domain.category.Category;
 import diaryApplication.diary.domain.emoticon.EmoticonDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,8 @@ class EmoticonServiceTest {
     @Test
     @Transactional
     void register() {
-        EmoticonDto emoticonDto = new EmoticonDto("potato",1,"angry");
+        EmoticonDto emoticonDto = new EmoticonDto("potato",new Category(),"angry");
+
         emoticonService.register(emoticonDto);
     }
 }

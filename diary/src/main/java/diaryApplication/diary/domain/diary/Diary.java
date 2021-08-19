@@ -1,5 +1,7 @@
 package diaryApplication.diary.domain.diary;
 
+import diaryApplication.diary.domain.emoticon.Emoticon;
+import diaryApplication.diary.domain.member.Member;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -23,9 +25,9 @@ public class Diary {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "emoticon_id")
-    private int emoticonId;
+    private Emoticon emoticonId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
-    private Long memberId;
+    private Member memberId;
 }
