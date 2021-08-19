@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "mem_emot_rel")
 @Getter
-public class Relation {
+public class EmotRelation {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "mem_emot_rel_id")
