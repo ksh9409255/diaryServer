@@ -21,6 +21,10 @@ public class CategoryService {
         categoryRepository.save(category);
     }
 
+    public void remove(int id){
+        categoryRepository.remove(id);
+    }
+
     public List<CategoryDto> findAll(){
         return categoryRepository.findAll();
     }

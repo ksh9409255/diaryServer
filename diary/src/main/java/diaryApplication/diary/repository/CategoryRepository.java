@@ -19,11 +19,11 @@ public class CategoryRepository {
         em.persist(category);
     }
 
-    public Category findById(Long id){
+    public Category findById(int id){
         return em.find(Category.class,id);
     }
 
-    public void remove(Long id){
+    public void remove(int id){
         em.remove(findById(id));
     }
 
