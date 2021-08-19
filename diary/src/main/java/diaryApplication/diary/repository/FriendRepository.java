@@ -11,16 +11,8 @@ public class FriendRepository {
 
     private final EntityManager em;
 
-    public void add(Long memberId1, Long memberId2) { // 친구 추가
-        em.persist(memberId1);
-        em.persist(memberId2);
-    }
-
-    public void findAll(Long member) { // 친구 조회
-        em.persist(member);
-    }
-
-    public void delete(Long memberId1, Long memberId2) { // 친구 삭제
-
+    public void add(Long memberId_1, Long memberId_2) { // 친구 추가
+        em.persist(memberId_1);
+        em.persist(memberId_2);
     }
 }

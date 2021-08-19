@@ -15,11 +15,9 @@ public class Relation {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id") // JoinColumn은 FK 이름
-    @Column(name = "member_id")
     private Long memberId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "emoticon_id")
-    @Column(name = "emoticon_id")
     private Long emoticonId;
 }

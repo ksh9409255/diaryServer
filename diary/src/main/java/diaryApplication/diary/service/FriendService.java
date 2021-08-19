@@ -10,7 +10,7 @@ public class FriendService {
 
     private final FriendRepository friendRepository;
 
-    public void add(Long memberId1, Long memberId2) { // 친구 추가
-        friendRepository.add(memberId1, memberId2);
+    public void add(Long memberId_1, Long memberId_2) { // 친구 추가
+        friendRepository.add(memberId_1, memberId_2);
     }
 }

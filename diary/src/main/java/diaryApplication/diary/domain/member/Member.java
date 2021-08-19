@@ -14,6 +14,5 @@ public class Member {
     private Long id;
     private String nickname;
 
-    @Column(name = "category_id")
     private int categoryId;
 }
