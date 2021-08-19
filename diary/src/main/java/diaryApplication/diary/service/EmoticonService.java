@@ -5,14 +5,15 @@ import diaryApplication.diary.domain.emoticon.EmoticonDto;
 import diaryApplication.diary.repository.EmoticonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class EmoticonService {
     private final EmoticonRepository emoticonRepository;
 
     public void register(EmoticonDto emoticon){
-        Emoticon newEmoticon = new Emoticon();
-        emoticonRepository.save(newEmoticon.toEntity(emoticon));
+        emoticonRepository.save(emoticon.toEntity());
     }
 }

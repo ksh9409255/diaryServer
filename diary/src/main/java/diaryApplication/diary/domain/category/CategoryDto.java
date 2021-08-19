@@ -1,5 +1,20 @@
 package diaryApplication.diary.domain.category;
 
-public class CategoryDto {
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@Getter
+@NoArgsConstructor
+public class CategoryDto {
+    private String name;
+
+    public CategoryDto(String name) {
+        this.name = name;
+    }
+
+    public Category toEntity(){
+        return Category.builder()
+                .name(name)
+                .build();
+    }
 }

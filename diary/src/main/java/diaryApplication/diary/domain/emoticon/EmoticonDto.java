@@ -16,4 +16,12 @@ public class EmoticonDto {
         this.categoryId = categoryId;
         this.description = description;
     }
+
+    public Emoticon toEntity(){
+        return Emoticon.builder()
+                .name(name)
+                .categoryId(categoryId)
+                .description(description)
+                .build();
+    }
 }

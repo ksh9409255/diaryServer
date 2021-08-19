@@ -24,19 +24,9 @@ public class Emoticon {
     private String description;
 
     @Builder
-    public Emoticon(int id, String name, Category categoryId, String description) {
-        this.id = id;
+    public Emoticon(String name, Category categoryId, String description) {
         this.name = name;
         this.categoryId = categoryId;
         this.description = description;
-    }
-
-    public Emoticon toEntity(EmoticonDto emoticonDto){
-        return Emoticon.builder()
-                .id(this.id)
-                .name(emoticonDto.getName())
-                .categoryId(emoticonDto.getCategoryId())
-                .description(emoticonDto.getDescription())
-                .build();
     }
 }
