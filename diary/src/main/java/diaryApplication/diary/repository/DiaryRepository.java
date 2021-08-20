@@ -14,7 +14,7 @@ public class DiaryRepository {
 
     private final EntityManager em;
 
-    public void write(Diary diary) {
+    public void save(Diary diary) { // 일기 작성
          em.persist(diary);
     }
 

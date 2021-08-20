@@ -14,8 +14,8 @@ public class DiaryController {
     private final DiaryService diaryService;
 
     @PostMapping("/diary")
-    public ResponseEntity write(@RequestBody DiaryDto diaryDto) {
-        diaryService.write(diaryDto);
+    public ResponseEntity save(@RequestBody DiaryDto diaryDto) {
+        diaryService.save(diaryDto);
         return new ResponseEntity(HttpStatus.OK);
     }
 

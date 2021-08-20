@@ -31,13 +31,7 @@ public class Diary {
     @JoinColumn(name = "member_id")
     private Member memberId;
 
-    public void write(DiaryDto diaryDto) {
-        Emoticon emoticon = new Emoticon();
-        Member member = new Member();
-
-        emoticon.diaryEmoticonIdSet(diaryDto.getEmoticonId());
-        member.diaryMemberIdSet(diaryDto.getMemberId());
-
+    public void save(DiaryDto diaryDto, Emoticon emoticon, Member member) {
         this.isPublic = diaryDto.isPublic();
         this.title = diaryDto.getTitle();
         this.content = diaryDto.getContent();

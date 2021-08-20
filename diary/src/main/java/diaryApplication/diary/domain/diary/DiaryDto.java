@@ -1,13 +1,12 @@
 package diaryApplication.diary.domain.diary;
 
-import diaryApplication.diary.domain.emoticon.Emoticon;
-import diaryApplication.diary.domain.member.Member;
-import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Getter
+@NoArgsConstructor
 public class DiaryDto {
 
     private boolean isPublic;

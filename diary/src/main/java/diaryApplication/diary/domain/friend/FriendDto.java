@@ -1,8 +1,10 @@
 package diaryApplication.diary.domain.friend;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor
 public class FriendDto {
 
     private Long memberId_1;

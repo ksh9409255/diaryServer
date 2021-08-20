@@ -2,7 +2,11 @@ package diaryApplication.diary.service;
 
 import diaryApplication.diary.domain.diary.Diary;
 import diaryApplication.diary.domain.diary.DiaryDto;
+import diaryApplication.diary.domain.emoticon.Emoticon;
+import diaryApplication.diary.domain.member.Member;
 import diaryApplication.diary.repository.DiaryRepository;
+import diaryApplication.diary.repository.EmoticonRepository;
+import diaryApplication.diary.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,12 +18,17 @@ import javax.transaction.Transactional;
 public class DiaryService {
 
     private final DiaryRepository diaryRepository;
+    private final EmoticonRepository emoticonRepository;
+    private final MemberRepository memberRepository;
 
-    public void write(DiaryDto diaryDto) {
+    public void save(DiaryDto diaryDto) {
+        Emoticon emoticon = emoticonRepository.findById(diaryDto.getEmoticonId());
+        Member member = memberRepository.findById(diaryDto.getMemberId());
+
         Diary diary = new Diary();
-        diary.write(diaryDto);
+        diary.save(diaryDto, emoticon, member);
 
-        diaryRepository.write(diary);
+        diaryRepository.save(diary);
     }
 
     public void findAll() {
