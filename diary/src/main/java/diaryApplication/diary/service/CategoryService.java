@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -46,5 +47,15 @@ public class CategoryService {
         Member member = memberRepository.findById(memberId);
         Category category = categoryRepository.findById(categoryId);
         categoryRepository.addMemberCategory(member,category);
+    }
+
+    public List<CategoryDto> findMemberCategory(Long id){
+        List<CategoryDto> categoryDtos = new ArrayList<>();
+        List<Category> categoryList = categoryRepository.findByMemberId(memberRepository.findById(id));
+        for(Category category : categoryList){
+            CategoryDto categoryDto = new CategoryDto(category.getId(),category.getName());
+            categoryDtos.add(categoryDto);
+        }
+        return categoryDtos;
     }
 }
