@@ -5,10 +5,9 @@ import diaryApplication.diary.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,6 +18,23 @@ public class CategoryController {
     @PostMapping
     public ResponseEntity categoryRegister(@RequestBody CategoryDto categoryDto){
         categoryService.register(categoryDto);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @DeleteMapping
+    public ResponseEntity categoryDelete(@RequestParam("id") int id){
+        categoryService.remove(id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<List<CategoryDto>> findAll(){
+        return new ResponseEntity(categoryService.findAll(),HttpStatus.OK);
+    }
+
+    @PutMapping
+    public ResponseEntity updateCategory(@RequestParam("changeId") int id, @RequestParam("name") String name){
+        categoryService.updateCategory(id,name);
         return new ResponseEntity(HttpStatus.OK);
     }
 }

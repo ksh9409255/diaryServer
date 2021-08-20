@@ -28,4 +28,8 @@ public class CategoryService {
     public List<CategoryDto> findAll(){
         return categoryRepository.findAll();
     }
+
+    public void updateCategory(int id, String name){
+        categoryRepository.changeCategoryName(id,name);
+    }
 }
