@@ -1,9 +1,7 @@
 package diaryApplication.diary.repository;
 
 import diaryApplication.diary.domain.friend.Friend;
-import diaryApplication.diary.domain.friend.FriendDto;
 import diaryApplication.diary.domain.member.Member;
-import diaryApplication.diary.domain.member.MemberDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

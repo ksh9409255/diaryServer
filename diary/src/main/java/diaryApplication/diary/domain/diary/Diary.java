@@ -2,6 +2,7 @@ package diaryApplication.diary.domain.diary;
 
 import diaryApplication.diary.domain.emoticon.Emoticon;
 import diaryApplication.diary.domain.member.Member;
+import diaryApplication.diary.repository.DiaryRepository;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -16,7 +17,7 @@ public class Diary {
     private boolean isPublic;
 
     @Column(nullable = false,length = 20) // 글자 수 20자 제한
-    private String name;
+    private String title;
 
     @Column(nullable = false,length = 1000)// 글자 수 1000자 제한
     private String content;
@@ -29,4 +30,13 @@ public class Diary {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member memberId;
+
+    public void write(DiaryDto diaryDto) {
+        this.isPublic = diaryDto.isPublic();
+        this.title = diaryDto.getTitle();
+        this.content = diaryDto.getContent();;
+        this.date = diaryDto.getDate();
+        this.emoticonId = diaryDto.getEmoticonId();
+        this.memberId = diaryDto.getMemberId();
+    }
 }

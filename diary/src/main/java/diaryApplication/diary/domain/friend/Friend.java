@@ -1,6 +1,5 @@
 package diaryApplication.diary.domain.friend;
 
-import diaryApplication.diary.repository.FriendRepository;
 import lombok.Getter;
 
 import javax.persistence.*;
