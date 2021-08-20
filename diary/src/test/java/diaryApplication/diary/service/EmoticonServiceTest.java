@@ -36,7 +36,6 @@ class EmoticonServiceTest {
         categoryService.register(category);
         EmoticonDto emoticonDto = new EmoticonDto("angry potato",category,"angry");
         emoticonService.register(emoticonDto);
-        Member member = new Member();
 
     }
 }
