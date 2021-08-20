@@ -3,6 +3,8 @@ package diaryApplication.diary.repository;
 import diaryApplication.diary.domain.category.Category;
 import diaryApplication.diary.domain.category.CategoryDto;
 import diaryApplication.diary.domain.emoticon.Emoticon;
+import diaryApplication.diary.domain.member.Member;
+import diaryApplication.diary.domain.member_category.MemberCategoryRelation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -40,5 +42,10 @@ public class CategoryRepository {
     public void changeCategoryName(int id, String name){
         Category category = findById(id);
         category.changeName(name);
+    }
+
+    public void addMemberCategory(Member member, Category category){
+        MemberCategoryRelation relation = new MemberCategoryRelation(member,category);
+        em.persist(relation);
     }
 }

@@ -1,7 +1,9 @@
 package diaryApplication.diary.service;
 
 import diaryApplication.diary.domain.category.CategoryDto;
+import diaryApplication.diary.domain.member.Member;
 import diaryApplication.diary.repository.CategoryRepository;
+import diaryApplication.diary.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,6 +18,9 @@ class CategoryServiceTest {
 
     @Autowired
     CategoryService categoryService;
+
+    @Autowired
+    MemberRepository memberRepository;
 
     @Test
     void register() {
@@ -45,5 +50,17 @@ class CategoryServiceTest {
         CategoryDto category = new CategoryDto("potato");
         categoryService.register(category);
         categoryService.updateCategory(1,"gamja");
+    }
+
+    @Test
+    void addMemberCategory() {
+        CategoryDto category1 = new CategoryDto("potato");
+        categoryService.register(category1);
+        CategoryDto category2 = new CategoryDto("tomato");
+        categoryService.register(category2);
+        Member member = new Member();
+        memberRepository.save(member);
+        categoryService.addMemberCategory(1L,1);
+        categoryService.addMemberCategory(1L,2);
     }
 }
