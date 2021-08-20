@@ -23,9 +23,15 @@ public class FriendRepository {
 
     public void save(Long memberId_1, Long memberId_2) { // 친구 수락 상태
         Friend friend1 = em.createQuery("SELECT f FROM Friend f WHERE f.memberId_1 = :memberId_1 and f.memberId_2 = :memberId_2",
-                Friend.class).getSingleResult();
+                Friend.class)
+                .setParameter("memberId_1", memberId_1)
+                .setParameter("memberId_2", memberId_2)
+                .getSingleResult();
         Friend friend2 = em.createQuery("SELECT f FROM Friend f WHERE f.memberId_1 = :memberId_2 and f.memberId_2 = :memberId_1",
-                Friend.class).getSingleResult();
+                Friend.class)
+                .setParameter("memberId_2", memberId_2)
+                .setParameter("memberId_1", memberId_1)
+                .getSingleResult();
 
         friend1.isAccept(true);
         friend2.isAccept(true);
