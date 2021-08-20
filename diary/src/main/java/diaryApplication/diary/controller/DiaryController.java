@@ -24,8 +24,8 @@ public class DiaryController {
     }
 
     @GetMapping("/diary")
-    public void findOne(@RequestParam Long id) {
-        diaryService.findOne(id);
+    public ResponseEntity<DiaryDto> findOne(@RequestParam Long id) {
+        return new ResponseEntity<>(diaryService.findOne(id), HttpStatus.OK);
     }
 
     public void remove() {

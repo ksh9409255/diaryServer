@@ -35,8 +35,8 @@ public class DiaryService {
 
     }
 
-    public void findOne(Long id) {
-        diaryRepository.findOne(id);
+    public DiaryDto findOne(Long id) {
+        return diaryRepository.findOne(id);
     }
 
     public void remove() {

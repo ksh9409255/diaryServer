@@ -29,7 +29,7 @@ public class FriendController {
 
     @GetMapping("/friend")
     public ResponseEntity<List<Long>> findAll(@RequestParam("id") Long id) {
-        return new ResponseEntity(friendService.findAll(id), HttpStatus.OK);
+        return new ResponseEntity<>(friendService.findAll(id), HttpStatus.OK);
     }
 
     @PostMapping("/friend/remove")
