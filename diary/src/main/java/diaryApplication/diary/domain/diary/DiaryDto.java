@@ -9,15 +9,15 @@ import java.util.Date;
 @NoArgsConstructor
 public class DiaryDto {
 
-    private boolean isPublic;
+    private boolean open;
     private String title;
     private String content;
     private Date date;
     private int emoticonId;
     private Long memberId;
 
-    public DiaryDto(boolean isPublic, String title, String content, Date date, int emoticonId, Long memberId) {
-        this.isPublic = isPublic;
+    public DiaryDto(boolean open, String title, String content, Date date, int emoticonId, Long memberId) {
+        this.open = open;
         this.title = title;
         this.content = content;
         this.date = date;

@@ -14,7 +14,7 @@ public class Diary {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private boolean isPublic;
+    private boolean open;
 
     @Column(nullable = false,length = 20) // 글자 수 20자 제한
     private String title;
@@ -32,7 +32,7 @@ public class Diary {
     private Member memberId;
 
     public void save(DiaryDto diaryDto, Emoticon emoticon, Member member) {
-        this.isPublic = diaryDto.isPublic();
+        this.open = diaryDto.isOpen();
         this.title = diaryDto.getTitle();
         this.content = diaryDto.getContent();
         this.date = diaryDto.getDate();

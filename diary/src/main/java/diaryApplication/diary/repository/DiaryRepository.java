@@ -24,7 +24,7 @@ public class DiaryRepository {
 
     public DiaryDto findOne(Long id) {
         Diary diary = em.find(Diary.class, id);
-        DiaryDto diaryDto = new DiaryDto(diary.isPublic(), diary.getTitle(), diary.getContent(), diary.getDate(),
+        DiaryDto diaryDto = new DiaryDto(diary.isOpen(), diary.getTitle(), diary.getContent(), diary.getDate(),
                 diary.getEmoticonId().getId(), diary.getMemberId().getId());
 
         return diaryDto;
