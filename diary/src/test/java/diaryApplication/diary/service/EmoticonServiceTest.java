@@ -32,16 +32,16 @@ class EmoticonServiceTest {
     void register() {
         CategoryDto category = new CategoryDto(1,"potato");
         categoryService.register(category);
-        EmoticonDto emoticonDto = new EmoticonDto("angry potato",category,"angry");
+        EmoticonDto emoticonDto = new EmoticonDto(1,"angry potato",category,"angry");
         emoticonService.register(emoticonDto);
     }
     @Test
     void registerMemberEmo() {
         CategoryDto category = new CategoryDto(1,"potato");
         categoryService.register(category);
-        EmoticonDto emoticonDto1 = new EmoticonDto("angry potato",category,"angry");
+        EmoticonDto emoticonDto1 = new EmoticonDto(1,"angry potato",category,"angry");
         emoticonService.register(emoticonDto1);
-        EmoticonDto emoticonDto2 = new EmoticonDto("happy potato",category,"happy");
+        EmoticonDto emoticonDto2 = new EmoticonDto(2,"happy potato",category,"happy");
         emoticonService.register(emoticonDto2);
         Member member = new Member();
         memberRepository.save(member);
@@ -52,12 +52,21 @@ class EmoticonServiceTest {
     void findMemberEmo() {
         CategoryDto category = new CategoryDto(1,"potato");
         categoryService.register(category);
-        EmoticonDto emoticonDto1 = new EmoticonDto("angry potato",category,"angry");
+        EmoticonDto emoticonDto1 = new EmoticonDto(1,"angry potato",category,"angry");
         emoticonService.register(emoticonDto1);
-        EmoticonDto emoticonDto2 = new EmoticonDto("happy potato",category,"happy");
+        EmoticonDto emoticonDto2 = new EmoticonDto(2,"happy potato",category,"happy");
         emoticonService.register(emoticonDto2);
         Member member = new Member();
         memberRepository.save(member);
         System.out.println(emoticonService.findByCategoryId(1));
+    }
+
+    @Test
+    void removeEmo(){
+        CategoryDto category = new CategoryDto(1,"potato");
+        categoryService.register(category);
+        EmoticonDto emoticonDto1 = new EmoticonDto(1,"angry potato",category,"angry");
+        emoticonService.register(emoticonDto1);
+        emoticonService.removeEmoticon(1);
     }
 }

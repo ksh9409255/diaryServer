@@ -23,13 +23,27 @@ public class EmoticonController {
 
     @PostMapping("/init")
     public ResponseEntity emoticonInit(@RequestParam("memberId") Long memberId,
-                                       @RequestParam("CategoryId") int categoryId){
+                                       @RequestParam("categoryId") int categoryId){
         emoticonService.initMemberEmoticon(memberId,categoryId);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<EmoticonDto>> findByCategoryId(@RequestParam("CategoryId") int categoryId){
+    public ResponseEntity<List<EmoticonDto>> findByCategoryId(@RequestParam("categoryId") int categoryId){
         return new ResponseEntity(emoticonService.findByCategoryId(categoryId),HttpStatus.OK);
+    }
+
+    @DeleteMapping
+    public ResponseEntity deleteEmoticon(@RequestParam("id") int id){
+        emoticonService.removeEmoticon(id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @PatchMapping
+    public ResponseEntity updateEmoticon(@RequestParam("id") int id,
+                                         @RequestParam("name") String name,
+                                         @RequestParam("description") String description){
+        emoticonService.updateEmoticon(id,name,description);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }

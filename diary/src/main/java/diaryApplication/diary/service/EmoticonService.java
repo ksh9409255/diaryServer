@@ -29,6 +29,15 @@ public class EmoticonService {
         emoticonRepository.save(emoticon.toEntity());
     }
 
+    public void removeEmoticon(int id){
+        emoticonRepository.remove(id);
+    }
+
+    public void updateEmoticon(int id, String name, String description){
+        Emoticon emoticon = emoticonRepository.findById(id);
+        emoticon.update(name,description);
+    }
+
     /**
      * 멤버이모티콘을 초기 등록해주는 서비스
      * @param id : 멤버id
@@ -51,7 +60,7 @@ public class EmoticonService {
         List<Emoticon> emoticonList = emoticonRepository.findByCategoryId(categoryRepository.findById(categoryId));
         List<EmoticonDto> emoticonDtos = new ArrayList<>();
         for(Emoticon emoticon : emoticonList){
-            EmoticonDto emoticonDto = new EmoticonDto(emoticon.getName(),
+            EmoticonDto emoticonDto = new EmoticonDto(emoticon.getId(),emoticon.getName(),
                     new CategoryDto(emoticon.getCategoryId().getId(),emoticon.getCategoryId().getName())
                     , emoticon.getDescription());
             emoticonDtos.add(emoticonDto);

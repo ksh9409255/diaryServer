@@ -34,4 +34,13 @@ public class Emoticon {
     public void diaryEmoticonIdSet(int id) {
         this.id = id;
     }
+
+    public void update(String name, String description){
+        if(!name.equals(null)){
+            this.name=name;
+        }
+        if(!description.equals(null)){
+            this.description=description;
+        }
+    }
 }

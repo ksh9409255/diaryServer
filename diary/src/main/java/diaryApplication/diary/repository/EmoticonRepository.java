@@ -24,6 +24,10 @@ public class EmoticonRepository {
         return em.find(Emoticon.class,id);
     }
 
+    public void remove(int id){
+        em.remove(findById(id));
+    }
+
     public List<Emoticon> findByCategoryId(Category id){
         return em.createQuery("select e from Emoticon e " +
                 "where e.categoryId=:id")
