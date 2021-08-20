@@ -1,5 +1,6 @@
 package diaryApplication.diary.repository;
 
+import diaryApplication.diary.domain.category.Category;
 import diaryApplication.diary.domain.emoticon.Emoticon;
 import diaryApplication.diary.domain.emoticon.EmoticonDto;
 import diaryApplication.diary.domain.member.Member;
@@ -23,7 +24,7 @@ public class EmoticonRepository {
         return em.find(Emoticon.class,id);
     }
 
-    public List<Emoticon> findByCategoryId(int id){
+    public List<Emoticon> findByCategoryId(Category id){
         return em.createQuery("select e from Emoticon e " +
                 "where e.categoryId=:id")
                 .setParameter("id",id)

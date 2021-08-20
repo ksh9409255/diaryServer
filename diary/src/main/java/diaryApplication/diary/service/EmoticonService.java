@@ -35,7 +35,7 @@ public class EmoticonService {
      */
     public void initMemberEmoticon(Long id,int categoryId){
         Member member = memberRepository.findById(id);
-        List<Emoticon> emoticonList = emoticonRepository.findByCategoryId(categoryId);
+        List<Emoticon> emoticonList = emoticonRepository.findByCategoryId(categoryRepository.findById(categoryId));
         for(Emoticon emoticon : emoticonList){
             emoticonRepository.saveMemberEmoticon(member,emoticon);
         }
