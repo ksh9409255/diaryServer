@@ -26,4 +26,5 @@ public class Friend {
     public void isAccept(boolean accept) {
         this.accept = accept;
     }
+
 }

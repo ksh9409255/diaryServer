@@ -50,4 +50,20 @@ public class FriendRepository {
 
         return nicknames;
     }
+
+    public void remove(Long memberId_1, Long memberId_2) { // 친구 삭제
+        Friend friend1 = em.createQuery("SELECT f FROM Friend f WHERE f.memberId_1 = :memberId_1 and f.memberId_2 = :memberId_2",
+                Friend.class)
+                .setParameter("memberId_1", memberId_1)
+                .setParameter("memberId_2", memberId_2)
+                .getSingleResult();
+        Friend friend2 = em.createQuery("SELECT f FROM Friend f WHERE f.memberId_1 = :memberId_2 and f.memberId_2 = :memberId_1",
+                Friend.class)
+                .setParameter("memberId_1", memberId_1)
+                .setParameter("memberId_2", memberId_2)
+                .getSingleResult();
+
+        em.remove(friend1);
+        em.remove(friend2);
+    }
 }

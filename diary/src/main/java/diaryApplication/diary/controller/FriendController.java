@@ -25,4 +25,9 @@ public class FriendController {
     public void findAll(@RequestParam("id") Long id) {
         friendService.findAll(id);
     }
+
+    @PostMapping("/friend/remove")
+    public void remove(@RequestBody FriendDto friendDto) {
+        friendService.remove(friendDto);
+    }
 }

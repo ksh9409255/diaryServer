@@ -32,4 +32,8 @@ public class FriendService {
     public void findAll(Long id) {
         friendRepository.findAll(id);
     }
+
+    public void remove(FriendDto friendDto) {
+        friendRepository.remove(friendDto.getMemberId_1(), friendDto.getMemberId_2());
+    }
 }
