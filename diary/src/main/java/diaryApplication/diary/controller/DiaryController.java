@@ -4,6 +4,7 @@ import diaryApplication.diary.domain.diary.DiaryDto;
 import diaryApplication.diary.service.DiaryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,7 +15,7 @@ public class DiaryController {
     private final DiaryService diaryService;
 
     @PostMapping("/diary")
-    public void write(@RequestParam DiaryDto diaryDto) {
+    public void write(@RequestBody DiaryDto diaryDto) {
         diaryService.write(diaryDto);
     }
 }

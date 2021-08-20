@@ -30,4 +30,8 @@ public class Emoticon {
         this.categoryId = categoryId;
         this.description = description;
     }
+
+    public void diaryEmoticonIdSet(int id) {
+        this.id = id;
+    }
 }

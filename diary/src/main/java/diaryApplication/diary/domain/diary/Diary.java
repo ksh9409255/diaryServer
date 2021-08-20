@@ -32,11 +32,17 @@ public class Diary {
     private Member memberId;
 
     public void write(DiaryDto diaryDto) {
+        Emoticon emoticon = new Emoticon();
+        Member member = new Member();
+
+        emoticon.diaryEmoticonIdSet(diaryDto.getEmoticonId());
+        member.diaryMemberIdSet(diaryDto.getMemberId());
+
         this.isPublic = diaryDto.isPublic();
         this.title = diaryDto.getTitle();
-        this.content = diaryDto.getContent();;
+        this.content = diaryDto.getContent();
         this.date = diaryDto.getDate();
-        this.emoticonId = diaryDto.getEmoticonId();
-        this.memberId = diaryDto.getMemberId();
+        this.emoticonId = emoticon;
+        this.memberId = member;
     }
 }

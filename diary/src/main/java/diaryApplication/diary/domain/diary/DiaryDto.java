@@ -13,10 +13,10 @@ public class DiaryDto {
     private String title;
     private String content;
     private Date date;
-    private Emoticon emoticonId;
-    private Member memberId;
+    private int emoticonId;
+    private Long memberId;
 
-    public DiaryDto(boolean isPublic, String title, String content, Date date, Emoticon emoticonId, Member memberId) {
+    public DiaryDto(boolean isPublic, String title, String content, Date date, int emoticonId, Long memberId) {
         this.isPublic = isPublic;
         this.title = title;
         this.content = content;
