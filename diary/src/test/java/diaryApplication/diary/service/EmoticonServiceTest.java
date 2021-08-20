@@ -47,4 +47,17 @@ class EmoticonServiceTest {
         memberRepository.save(member);
         emoticonService.initMemberEmoticon(1L,1);
     }
+
+    @Test
+    void findMemberEmo() {
+        CategoryDto category = new CategoryDto(1,"potato");
+        categoryService.register(category);
+        EmoticonDto emoticonDto1 = new EmoticonDto("angry potato",category,"angry");
+        emoticonService.register(emoticonDto1);
+        EmoticonDto emoticonDto2 = new EmoticonDto("happy potato",category,"happy");
+        emoticonService.register(emoticonDto2);
+        Member member = new Member();
+        memberRepository.save(member);
+        System.out.println(emoticonService.findByCategoryId(1));
+    }
 }

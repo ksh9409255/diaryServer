@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -39,5 +40,22 @@ public class EmoticonService {
         for(Emoticon emoticon : emoticonList){
             emoticonRepository.saveMemberEmoticon(member,emoticon);
         }
+    }
+
+    /**
+     * 카테고리에 있는 모든 이모티콘들을 다 조회하는 서비스
+     * @param categoryId : 카테고리 id
+     * @return : 이모티콘dto 리스트
+     */
+    public List<EmoticonDto> findByCategoryId(int categoryId){
+        List<Emoticon> emoticonList = emoticonRepository.findByCategoryId(categoryRepository.findById(categoryId));
+        List<EmoticonDto> emoticonDtos = new ArrayList<>();
+        for(Emoticon emoticon : emoticonList){
+            EmoticonDto emoticonDto = new EmoticonDto(emoticon.getName(),
+                    new CategoryDto(emoticon.getCategoryId().getId(),emoticon.getCategoryId().getName())
+                    , emoticon.getDescription());
+            emoticonDtos.add(emoticonDto);
+        }
+        return emoticonDtos;
     }
 }
