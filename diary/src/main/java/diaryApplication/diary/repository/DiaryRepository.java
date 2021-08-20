@@ -17,4 +17,24 @@ public class DiaryRepository {
     public void write(Diary diary) {
          em.persist(diary);
     }
+
+    public void findAll() {
+
+    }
+
+    public DiaryDto findOne(Long id) {
+        Diary diary = em.find(Diary.class, id);
+        DiaryDto diaryDto = new DiaryDto(diary.isPublic(), diary.getTitle(), diary.getContent(), diary.getDate(),
+                diary.getEmoticonId().getId(), diary.getMemberId().getId());
+
+        return diaryDto;
+    }
+
+    public void remove() {
+
+    }
+
+    public void modify() {
+
+    }
 }

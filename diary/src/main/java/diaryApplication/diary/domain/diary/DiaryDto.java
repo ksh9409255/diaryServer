@@ -2,6 +2,7 @@ package diaryApplication.diary.domain.diary;
 
 import diaryApplication.diary.domain.emoticon.Emoticon;
 import diaryApplication.diary.domain.member.Member;
+import lombok.Builder;
 import lombok.Getter;
 
 import java.util.Date;

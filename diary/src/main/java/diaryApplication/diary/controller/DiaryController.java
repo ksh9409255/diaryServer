@@ -3,10 +3,9 @@ package diaryApplication.diary.controller;
 import diaryApplication.diary.domain.diary.DiaryDto;
 import diaryApplication.diary.service.DiaryService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -15,7 +14,25 @@ public class DiaryController {
     private final DiaryService diaryService;
 
     @PostMapping("/diary")
-    public void write(@RequestBody DiaryDto diaryDto) {
+    public ResponseEntity write(@RequestBody DiaryDto diaryDto) {
         diaryService.write(diaryDto);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    public void findAll() {
+
+    }
+
+    @GetMapping("/diary")
+    public void findOne(@RequestParam Long id) {
+        diaryService.findOne(id);
+    }
+
+    public void remove() {
+
+    }
+
+    public void modify() {
+
     }
 }

@@ -21,4 +21,20 @@ public class DiaryService {
 
         diaryRepository.write(diary);
     }
+
+    public void findAll() {
+
+    }
+
+    public void findOne(Long id) {
+        diaryRepository.findOne(id);
+    }
+
+    public void remove() {
+
+    }
+
+    public void modify() {
+
+    }
 }
