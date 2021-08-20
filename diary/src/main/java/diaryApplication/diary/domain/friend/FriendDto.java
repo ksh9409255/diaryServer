@@ -12,4 +12,5 @@ public class FriendDto {
         this.memberId_1 = memberId_1;
         this.memberId_2 = memberId_2;
     }
+
 }

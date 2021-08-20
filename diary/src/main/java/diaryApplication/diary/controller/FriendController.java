@@ -11,13 +11,18 @@ public class FriendController {
 
     private final FriendService friendService;
 
-    @PostMapping("/friend")
+    @PostMapping("/friend/add")
     public void add(@RequestBody FriendDto friendDto) {
-        friendService.add(friendDto.getMemberId_1(), friendDto.getMemberId_2());
+        friendService.add(friendDto);
     }
 
-    @GetMapping("/friend")
-    public void findAll(@RequestParam("id") Long id) {
-        friendService.findAll(id);
+    @PostMapping("/friend/save")
+    public void save(@RequestBody FriendDto friendDto) {
+        friendService.save(friendDto);
     }
+
+//    @GetMapping("/friend")
+//    public void findAll(@RequestParam("id") Long id) {
+//        friendService.findAll(id);
+//    }
 }
