@@ -36,4 +36,9 @@ public class CategoryRepository {
         }
         return categoryDtos;
     }
+
+    public void changeCategoryName(int id, String name){
+        Category category = findById(id);
+        category.changeName(name);
+    }
 }
