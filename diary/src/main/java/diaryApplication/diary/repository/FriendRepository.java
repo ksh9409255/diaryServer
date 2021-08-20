@@ -38,17 +38,18 @@ public class FriendRepository {
         friend2.isAccept(true);
     }
 
-    public List<String> findAll(Long id) { // 친구 조회
+    public List<Long> findAll(Long id) { // 친구 조회
         List<Friend> friends = em.createQuery("SELECT f FROM Friend f WHERE f.memberId_1 = :id and f.accept = true", Friend.class)
                 .setParameter("id", id)
                 .getResultList();
-        List<String> nicknames = new ArrayList<>();
+        List<Long> memberId = new ArrayList<>();
 
         for (Friend friend : friends) {
-            nicknames.add(em.find(Member.class, friend.getMemberId_2()).getNickname());
+            memberId.add(em.find(Member.class, friend.getMemberId_2()).getId());
+
         }
 
-        return nicknames;
+        return memberId;
     }
 
     public void remove(Long memberId_1, Long memberId_2) { // 친구 삭제
