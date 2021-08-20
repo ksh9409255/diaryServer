@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -29,8 +30,8 @@ public class FriendService {
         friendRepository.save(friendDto.getMemberId_1(), friendDto.getMemberId_2());
     }
 
-    public void findAll(Long id) {
-        friendRepository.findAll(id);
+    public List<Long> findAll(Long id) {
+        return friendRepository.findAll(id);
     }
 
     public void remove(FriendDto friendDto) {
