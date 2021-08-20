@@ -37,7 +37,6 @@ public class EmoticonRepository {
      */
     public void saveMemberEmoticon(Member member,Emoticon emoticon){
         MemberEmoticonRelation memberEmoticonRelation = new MemberEmoticonRelation(member,emoticon);
-
         em.persist(memberEmoticonRelation);
     }
 }

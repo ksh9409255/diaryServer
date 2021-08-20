@@ -34,8 +34,10 @@ class EmoticonServiceTest {
     void registerMemberEmo() {
         CategoryDto category = new CategoryDto("potato");
         categoryService.register(category);
-        EmoticonDto emoticonDto = new EmoticonDto("angry potato",category,"angry");
-        emoticonService.register(emoticonDto);
-
+        EmoticonDto emoticonDto1 = new EmoticonDto("angry potato",category,"angry");
+        emoticonService.register(emoticonDto1);
+        EmoticonDto emoticonDto2 = new EmoticonDto("happy potato",category,"happy");
+        emoticonService.register(emoticonDto2);
+        emoticonService.initMemberEmoticon(1L,1);
     }
 }

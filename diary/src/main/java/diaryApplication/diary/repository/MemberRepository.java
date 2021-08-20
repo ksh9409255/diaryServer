@@ -11,6 +11,10 @@ import javax.persistence.EntityManager;
 public class MemberRepository {
     private final EntityManager em;
 
+    public void save(Member member){
+        em.persist(member);
+    }
+
     public Member findById(Long id){
         return em.find(Member.class,id);
     }
