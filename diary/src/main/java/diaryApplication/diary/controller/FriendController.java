@@ -12,8 +12,8 @@ public class FriendController {
     private final FriendService friendService;
 
     @PostMapping("/friend")
-    public void save(@RequestBody FriendDto friendDto) {
-        friendService.save(friendDto.getMemberId_1(), friendDto.getMemberId_2());
+    public void add(@RequestBody FriendDto friendDto) {
+        friendService.add(friendDto.getMemberId_1(), friendDto.getMemberId_2());
     }
 
     @GetMapping("/friend")

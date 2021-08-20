@@ -16,7 +16,7 @@ public class FriendRepository {
 
     private final EntityManager em;
 
-    public void save(Friend friend1, Friend friend2) { // 친구 추가(요청이 들어온 상태)
+    public void add(Friend friend1, Friend friend2) { // 친구 추가(요청이 들어온 상태)
         em.persist(friend1);
         em.persist(friend2);
     }

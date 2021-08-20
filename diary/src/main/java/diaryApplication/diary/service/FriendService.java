@@ -14,14 +14,14 @@ public class FriendService {
 
     private final FriendRepository friendRepository;
 
-    public void save(Long memberId_1, Long memberId_2) {
+    public void add(Long memberId_1, Long memberId_2) {
         Friend friend1 = new Friend();
         Friend friend2 = new Friend();
 
-        friend1.save(memberId_1, memberId_2, memberId_2);
-        friend2.save(memberId_2, memberId_1, memberId_2);
+        friend1.add(memberId_1, memberId_2, memberId_2);
+        friend2.add(memberId_2, memberId_1, memberId_2);
 
-        friendRepository.save(friend1, friend2);
+        friendRepository.add(friend1, friend2);
     }
 
     public void findAll(Long id) {

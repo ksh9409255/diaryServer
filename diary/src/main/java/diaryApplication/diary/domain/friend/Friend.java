@@ -16,7 +16,7 @@ public class Friend {
     private Long targetId;
     private boolean accept;
 
-    public void save(Long memberId_1, Long memberId_2, Long targetId) {
+    public void add(Long memberId_1, Long memberId_2, Long targetId) {
         this.memberId_1 = memberId_1;
         this.memberId_2 = memberId_2;
         this.targetId = targetId;
