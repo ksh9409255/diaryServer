@@ -63,4 +63,17 @@ class CategoryServiceTest {
         categoryService.addMemberCategory(1L,1);
         categoryService.addMemberCategory(1L,2);
     }
+
+    @Test
+    void findMemberCategory() {
+        CategoryDto category1 = new CategoryDto("potato");
+        categoryService.register(category1);
+        CategoryDto category2 = new CategoryDto("tomato");
+        categoryService.register(category2);
+        Member member = new Member();
+        memberRepository.save(member);
+        categoryService.addMemberCategory(1L,1);
+        categoryService.addMemberCategory(1L,2);
+        System.out.println(categoryService.findMemberCategory(1L).get(0).getName());
+    }
 }

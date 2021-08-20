@@ -48,4 +48,10 @@ public class CategoryRepository {
         MemberCategoryRelation relation = new MemberCategoryRelation(member,category);
         em.persist(relation);
     }
+
+    public List<Category> findByMemberId(Member member){
+        return em.createQuery("select r.categoryId from MemberCategoryRelation r where r.memberId=:memberId")
+                .setParameter("memberId",member)
+                .getResultList();
+    }
 }
