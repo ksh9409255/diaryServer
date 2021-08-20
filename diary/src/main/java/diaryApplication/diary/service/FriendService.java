@@ -29,7 +29,7 @@ public class FriendService {
         friendRepository.save(friendDto.getMemberId_1(), friendDto.getMemberId_2());
     }
 
-//    public void findAll(Long id) {
-//        friendRepository.findAll(id);
-//    }
+    public void findAll(Long id) {
+        friendRepository.findAll(id);
+    }
 }

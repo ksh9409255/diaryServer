@@ -21,8 +21,8 @@ public class FriendController {
         friendService.save(friendDto);
     }
 
-//    @GetMapping("/friend")
-//    public void findAll(@RequestParam("id") Long id) {
-//        friendService.findAll(id);
-//    }
+    @GetMapping("/friend")
+    public void findAll(@RequestParam("id") Long id) {
+        friendService.findAll(id);
+    }
 }

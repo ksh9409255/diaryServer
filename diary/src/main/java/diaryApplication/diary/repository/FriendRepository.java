@@ -2,6 +2,7 @@ package diaryApplication.diary.repository;
 
 import diaryApplication.diary.domain.friend.Friend;
 import diaryApplication.diary.domain.friend.FriendDto;
+import diaryApplication.diary.domain.member.Member;
 import diaryApplication.diary.domain.member.MemberDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -37,8 +38,16 @@ public class FriendRepository {
         friend2.isAccept(true);
     }
 
-//    public List<MemberDto> findAll(Long id) { // 친구 조회
-//        List<MemberDto> friends = new ArrayList<>();
-//
-//    }
+    public List<String> findAll(Long id) { // 친구 조회
+        List<Friend> friends = em.createQuery("SELECT f FROM Friend f WHERE f.memberId_1 = :id and f.accept = true", Friend.class)
+                .setParameter("id", id)
+                .getResultList();
+        List<String> nicknames = new ArrayList<>();
+
+        for (Friend friend : friends) {
+            nicknames.add(em.find(Member.class, friend.getMemberId_2()).getNickname());
+        }
+
+        return nicknames;
+    }
 }

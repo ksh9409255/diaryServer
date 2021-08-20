@@ -5,12 +5,10 @@ import lombok.Getter;
 @Getter
 public class MemberDto {
 
-    private Long id;
     private String nickname;
     private int categoryId;
 
-    public MemberDto(Long id, String nickname, int categoryId) {
-        this.id = id;
+    public MemberDto(String nickname, int categoryId) {
         this.nickname = nickname;
         this.categoryId = categoryId;
     }
