@@ -34,7 +34,7 @@ public class DiaryRepository {
 
     }
 
-    public void modify() {
-
+    public void modify(Diary diary) {
+        em.persist(diary);
     }
 }

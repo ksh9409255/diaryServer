@@ -39,4 +39,13 @@ public class Diary {
         this.emoticonId = emoticon;
         this.memberId = member;
     }
+
+    public void modify(DiaryDto diaryDto, Emoticon emoticon, Member member) {
+        this.open = diaryDto.isOpen();
+        this.title = diaryDto.getTitle();
+        this.content = diaryDto.getContent();
+        this.date = diaryDto.getDate();
+        this.emoticonId = emoticon;
+        this.memberId = member;
+    }
 }

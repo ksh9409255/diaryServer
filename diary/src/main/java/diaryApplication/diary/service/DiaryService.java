@@ -43,7 +43,13 @@ public class DiaryService {
 
     }
 
-    public void modify() {
+    public void modify(DiaryDto diaryDto) {
+        Emoticon emoticon = emoticonRepository.findById(diaryDto.getEmoticonId());
+        Member member = memberRepository.findById(diaryDto.getMemberId());
 
+        Diary diary = new Diary();
+        diary.modify(diaryDto, emoticon, member);
+
+        diaryRepository.modify(diary);
     }
 }

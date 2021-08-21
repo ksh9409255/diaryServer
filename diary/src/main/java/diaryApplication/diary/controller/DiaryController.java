@@ -13,7 +13,7 @@ public class DiaryController {
 
     private final DiaryService diaryService;
 
-    @PostMapping("/diary")
+    @PostMapping("/diary/save")
     public ResponseEntity save(@RequestBody DiaryDto diaryDto) {
         diaryService.save(diaryDto);
         return new ResponseEntity(HttpStatus.OK);
@@ -23,8 +23,8 @@ public class DiaryController {
 
     }
 
-    @GetMapping("/diary")
-    public ResponseEntity<DiaryDto> findOne(@RequestParam Long id) {
+    @GetMapping("/diary/findOne")
+    public ResponseEntity<DiaryDto> findOne(@RequestParam("id") Long id) {
         return new ResponseEntity<>(diaryService.findOne(id), HttpStatus.OK);
     }
 
@@ -32,7 +32,9 @@ public class DiaryController {
 
     }
 
-    public void modify() {
-
+    @PostMapping("/diary/modify")
+    public ResponseEntity modify(@RequestBody DiaryDto diaryDto) {
+        diaryService.modify(diaryDto);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }
