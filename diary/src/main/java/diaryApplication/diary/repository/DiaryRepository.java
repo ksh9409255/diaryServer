@@ -2,6 +2,7 @@ package diaryApplication.diary.repository;
 
 import diaryApplication.diary.domain.diary.Diary;
 import diaryApplication.diary.domain.diary.DiaryDto;
+import diaryApplication.diary.domain.diary.DiaryModifyDto;
 import diaryApplication.diary.domain.emoticon.Emoticon;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -30,11 +31,16 @@ public class DiaryRepository {
         return diaryDto;
     }
 
-    public void remove() {
+    public void remove(Long id) {
+        Diary diary = em.find(Diary.class, id);
 
+        em.remove(diary);
     }
 
-    public void modify(Diary diary) {
-        em.persist(diary);
+    public void modify(DiaryModifyDto diaryModifyDto) {
+        Diary diary = em.find(Diary.class, diaryModifyDto.getId());
+        Emoticon emoticon = em.find(Emoticon.class, diaryModifyDto.getEmoticonId());
+
+        diary.modify(diary, diaryModifyDto, emoticon);
     }
 }

@@ -2,6 +2,7 @@ package diaryApplication.diary.service;
 
 import diaryApplication.diary.domain.diary.Diary;
 import diaryApplication.diary.domain.diary.DiaryDto;
+import diaryApplication.diary.domain.diary.DiaryModifyDto;
 import diaryApplication.diary.domain.emoticon.Emoticon;
 import diaryApplication.diary.domain.member.Member;
 import diaryApplication.diary.repository.DiaryRepository;
@@ -39,17 +40,11 @@ public class DiaryService {
         return diaryRepository.findOne(id);
     }
 
-    public void remove() {
-
+    public void remove(Long id) {
+        diaryRepository.remove(id);
     }
 
-    public void modify(DiaryDto diaryDto) {
-        Emoticon emoticon = emoticonRepository.findById(diaryDto.getEmoticonId());
-        Member member = memberRepository.findById(diaryDto.getMemberId());
-
-        Diary diary = new Diary();
-        diary.modify(diaryDto, emoticon, member);
-
-        diaryRepository.modify(diary);
+    public void modify(DiaryModifyDto diaryModifyDto) {
+        diaryRepository.modify(diaryModifyDto);
     }
 }

@@ -40,12 +40,10 @@ public class Diary {
         this.memberId = member;
     }
 
-    public void modify(DiaryDto diaryDto, Emoticon emoticon, Member member) {
-        this.open = diaryDto.isOpen();
-        this.title = diaryDto.getTitle();
-        this.content = diaryDto.getContent();
-        this.date = diaryDto.getDate();
-        this.emoticonId = emoticon;
-        this.memberId = member;
+    public void modify(Diary diary, DiaryModifyDto diaryModifyDtoDto, Emoticon emoticon) {
+        diary.open = diaryModifyDtoDto.isOpen();
+        diary.title = diaryModifyDtoDto.getTitle();
+        diary.content = diaryModifyDtoDto.getContent();;
+        diary.emoticonId = emoticon;
     }
 }
