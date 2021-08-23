@@ -21,5 +21,6 @@ public class MemberController {
     @PostMapping
     public ResponseEntity registerMember(@RequestBody MemberDto member){
         memberService.registerMember(member);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }
