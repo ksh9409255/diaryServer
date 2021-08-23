@@ -23,4 +23,10 @@ public class MemberController {
         memberService.registerMember(member);
         return new ResponseEntity(HttpStatus.OK);
     }
+
+    @GetMapping("/check")
+    public ResponseEntity<Boolean> checkRegister(@RequestParam("id") Long id){
+        return new ResponseEntity(memberService.findById(id), HttpStatus.OK);
+    }
+
 }

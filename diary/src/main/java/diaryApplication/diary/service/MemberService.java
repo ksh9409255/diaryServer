@@ -21,4 +21,21 @@ public class MemberService {
         Member member = memberRepository.findById(id);
         return new MemberDto(member.getId(),member.getNickname(),member.getCategoryId());
     }
+
+    /**
+     * 회원가입 여부 확인 서비스
+     * @return : 회원가입 됨 - true
+     */
+    public Boolean checkRegister(Long id){
+        Member member;
+        try {
+            member = memberRepository.findById(id);
+            if(member==null){
+                return false;
+            }
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
+        return true;
+    }
 }

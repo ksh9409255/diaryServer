@@ -22,6 +22,9 @@ class MemberServiceTest {
     @Autowired
     MemberRepository memberRepository;
 
+    @Autowired
+    MemberService memberService;
+
     @Test
     void registerMember() {
         CategoryDto category = new CategoryDto("potato");
@@ -35,5 +38,13 @@ class MemberServiceTest {
         MemberDto memberDto1 = new MemberDto(1L,"KIM",1);
         memberRepository.save(memberDto1.toEntity());
         System.out.println(memberRepository.findById(1L).getNickname());
+    }
+
+    @Test
+    void checkRegister() {
+        MemberDto memberDto1 = new MemberDto(1L,"KIM",1);
+        memberRepository.save(memberDto1.toEntity());
+        //System.out.println(memberService.checkRegister(1L)); // 회원 아닌경우
+        System.out.println(memberService.checkRegister(2L)); // 회원 인 경우
     }
 }
