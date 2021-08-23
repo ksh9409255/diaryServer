@@ -28,8 +28,8 @@ class FriendServiceTest {
     @Test
     @Transactional
     void findAll() {
-        MemberDto member1 = new MemberDto("kim", 1);
-        MemberDto member2 = new MemberDto("yoon", 1);
+        MemberDto member1 = new MemberDto(1L,"kim", 1);
+        MemberDto member2 = new MemberDto(2L,"yoon", 1);
 
         friendService.add(friendDto);
         friendService.save(friendDto);
