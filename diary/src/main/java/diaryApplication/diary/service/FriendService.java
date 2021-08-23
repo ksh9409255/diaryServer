@@ -27,7 +27,10 @@ public class FriendService {
     }
 
     public void save(FriendDto friendDto) {
-        friendRepository.save(friendDto.getMemberId_1(), friendDto.getMemberId_2());
+        Friend friend1 = friendRepository.findSet(friendDto.getMemberId_1(), friendDto.getMemberId_2());
+        Friend friend2 = friendRepository.findSet(friendDto.getMemberId_2(), friendDto.getMemberId_1());
+
+        friendRepository.save(friend1, friend2);
     }
 
     public List<Long> findAll(Long id) {

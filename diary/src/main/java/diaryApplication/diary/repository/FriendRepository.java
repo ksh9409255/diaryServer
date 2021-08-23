@@ -20,18 +20,7 @@ public class FriendRepository {
         em.persist(friend2);
     }
 
-    public void save(Long memberId_1, Long memberId_2) { // 친구 수락 상태
-        Friend friend1 = em.createQuery("SELECT f FROM Friend f WHERE f.memberId_1 = :memberId_1 and f.memberId_2 = :memberId_2",
-                Friend.class)
-                .setParameter("memberId_1", memberId_1)
-                .setParameter("memberId_2", memberId_2)
-                .getSingleResult();
-        Friend friend2 = em.createQuery("SELECT f FROM Friend f WHERE f.memberId_1 = :memberId_2 and f.memberId_2 = :memberId_1",
-                Friend.class)
-                .setParameter("memberId_2", memberId_2)
-                .setParameter("memberId_1", memberId_1)
-                .getSingleResult();
-
+    public void save(Friend friend1, Friend friend2) { // 친구 수락 상태
         friend1.isAccept(true);
         friend2.isAccept(true);
     }
@@ -44,7 +33,6 @@ public class FriendRepository {
 
         for (Friend friend : friends) {
             memberId.add(em.find(Member.class, friend.getMemberId_2()).getId());
-
         }
 
         return memberId;
@@ -64,5 +52,15 @@ public class FriendRepository {
 
         em.remove(friend1);
         em.remove(friend2);
+    }
+
+    public Friend findSet(Long memberId_1, Long memberId_2) {
+        Friend friend = em.createQuery("SELECT f FROM Friend f WHERE f.memberId_1 = :memberId_1 and f.memberId_2 = :memberId_2",
+                Friend.class)
+                .setParameter("memberId_1", memberId_1)
+                .setParameter("memberId_2", memberId_2)
+                .getSingleResult();
+
+        return friend;
     }
 }
