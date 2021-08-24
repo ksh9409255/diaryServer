@@ -1,5 +1,6 @@
 package diaryApplication.diary.service;
 
+
 import diaryApplication.diary.domain.member.Member;
 import diaryApplication.diary.domain.member.MemberDto;
 import diaryApplication.diary.repository.MemberRepository;
@@ -13,8 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberService {
     private final MemberRepository memberRepository;
 
-    public void registerMember(MemberDto memberDto){
-        memberRepository.save(memberDto.toEntity());
+    // 자동 로그인만 구현하면 진짜 끝
+    public void registerMember(MemberDto memberDto){ // 문제점, 안드에서는 카테고리id값을 int로만 받는다. 이것만 해결하면 로그인 끝
+        memberRepository.save(memberDto.toEntity()
+        );
     }
 
     public MemberDto findById(Long id){
@@ -31,11 +34,11 @@ public class MemberService {
         try {
             member = memberRepository.findById(id);
             if(member==null){
-                return false;
+                return Boolean.FALSE;
             }
         }catch (NullPointerException e){
             e.printStackTrace();
         }
-        return true;
+        return Boolean.TRUE;
     }
 }

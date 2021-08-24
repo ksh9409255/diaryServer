@@ -8,19 +8,19 @@ import lombok.NoArgsConstructor;
 public class MemberDto {
 
     private Long id;
-    private String nickname;
+    private String nickName;
     private int categoryId;
 
-    public MemberDto(Long id, String nickname, int categoryId) {
+    public MemberDto(Long id, String nickName, int categoryId) {
         this.id = id;
-        this.nickname = nickname;
+        this.nickName = nickName;
         this.categoryId = categoryId;
     }
 
     public Member toEntity(){
         return Member.builder()
                 .id(id)
-                .nickname(nickname)
+                .nickname(nickName)
                 .categoryId(categoryId)
                 .build();
     }

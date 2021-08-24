@@ -26,7 +26,7 @@ public class MemberController {
 
     @GetMapping("/check")
     public ResponseEntity<Boolean> checkRegister(@RequestParam("id") Long id){
-        return new ResponseEntity(memberService.findById(id), HttpStatus.OK);
+        return new ResponseEntity(memberService.checkRegister(id), HttpStatus.OK);
     }
 
 }
