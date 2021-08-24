@@ -42,4 +42,9 @@ public class MemberController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
+    @GetMapping("/nickname")
+    public ResponseEntity<Boolean> validNickName(@RequestParam("nickName") String name){
+        return new ResponseEntity(memberService.validNickName(name), HttpStatus.OK);
+    }
+
 }

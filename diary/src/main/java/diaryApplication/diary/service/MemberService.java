@@ -50,4 +50,8 @@ public class MemberService {
         Member member = memberRepository.findById(memberDto.getId());
         member.updateMember(memberDto.getNickName(),memberDto.getCategoryId());
     }
+
+    public Boolean validNickName(String name){
+        return memberRepository.validNickName(name);
+    }
 }

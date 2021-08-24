@@ -6,9 +6,11 @@ import diaryApplication.diary.domain.member.Member;
 import diaryApplication.diary.domain.member_category.MemberCategoryRelation;
 import diaryApplication.diary.domain.member_emoticon.MemberEmoticonRelation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import java.util.List;
 
 @Repository
@@ -62,5 +64,17 @@ public class MemberRepository {
                 .getSingleResult();
 
         return member;
+    }
+
+    public Boolean validNickName(String name) {
+        Member member;
+        try{
+            member = em.createQuery("select m from Member m where m.nickname = :nickname",Member.class)
+                    .setParameter("nickname",name)
+                    .getSingleResult();
+        }catch (NoResultException e){
+            return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
     }
 }

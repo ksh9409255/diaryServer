@@ -65,4 +65,12 @@ class MemberServiceTest {
         memberService.updateMember(new MemberDto(1L,"SEOR",2));
         System.out.println(memberService.findById(1L).getNickName());
     }
+
+    @Test
+    void validNickName() {
+        MemberDto memberDto = new MemberDto(1L,"KIM",1);
+        memberRepository.save(memberDto.toEntity());
+        //System.out.println(memberService.validNickName("KIM"));
+        System.out.println(memberService.validNickName("SEONG"));
+    }
 }
