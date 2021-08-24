@@ -30,10 +30,10 @@ public class FriendRepository {
         List<Friend> friends = em.createQuery("SELECT f FROM Friend f WHERE f.memberId_1 = :id and f.accept = true", Friend.class)
                 .setParameter("id", id)
                 .getResultList();
-        MemberDto memberDto = new MemberDto();
         List<MemberDto> memberDtos = new ArrayList<>();
 
         for (Friend friend : friends) {
+            MemberDto memberDto = new MemberDto();
             memberDto.findMemberDtos(friend.getMemberId_2());
             memberDtos.add(memberDto);
         }
