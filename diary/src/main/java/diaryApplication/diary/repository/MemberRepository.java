@@ -4,6 +4,7 @@ import diaryApplication.diary.domain.category.Category;
 import diaryApplication.diary.domain.emoticon.Emoticon;
 import diaryApplication.diary.domain.member.Member;
 import diaryApplication.diary.domain.member_category.MemberCategoryRelation;
+import diaryApplication.diary.domain.member_emoticon.MemberEmoticonRelation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -35,11 +36,18 @@ public class MemberRepository {
     }
 
     public void remove(Long id){
-        List<MemberCategoryRelation> relationList = em.createQuery(
+        List<MemberCategoryRelation> relationList1 = em.createQuery(
                 "select r from MemberCategoryRelation r where r.memberId=:memberId")
                 .setParameter("memberId",findById(id))
                 .getResultList();
-        for(MemberCategoryRelation relation :relationList){
+        for(MemberCategoryRelation relation :relationList1){
+            em.remove(relation);
+        }
+        List<MemberEmoticonRelation> relationList2 = em.createQuery(
+                "select r from MemberEmoticonRelation r where r.memberId=:memberId")
+                .setParameter("memberId",findById(id))
+                .getResultList();
+        for(MemberEmoticonRelation relation :relationList2){
             em.remove(relation);
         }
         em.remove(findById(id));
