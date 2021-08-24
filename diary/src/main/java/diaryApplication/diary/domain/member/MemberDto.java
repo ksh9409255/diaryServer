@@ -24,4 +24,14 @@ public class MemberDto {
                 .categoryId(categoryId)
                 .build();
     }
+
+    /**
+     * FriendRepository에서 findAll()에서 사용되는 메서드로,
+     * 반환할 memberDto의 값을 set해주는 메서드
+     */
+    public void findMemberDtos(Member member) {
+        this.id = member.getId();
+        this.nickName = member.getNickname();
+        this.categoryId = member.getCategoryId();
+    }
 }

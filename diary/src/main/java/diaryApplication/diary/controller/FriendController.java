@@ -1,6 +1,7 @@
 package diaryApplication.diary.controller;
 
 import diaryApplication.diary.domain.friend.FriendDto;
+import diaryApplication.diary.domain.member.MemberDto;
 import diaryApplication.diary.service.FriendService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,7 +29,7 @@ public class FriendController {
     }
 
     @GetMapping("/friend")
-    public ResponseEntity<List<Long>> findAll(@RequestParam("id") Long id) {
+    public ResponseEntity<List<MemberDto>> findAll(@RequestParam("id") Long id) {
         return new ResponseEntity<>(friendService.findAll(id), HttpStatus.OK);
     }
 

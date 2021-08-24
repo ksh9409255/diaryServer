@@ -2,6 +2,7 @@ package diaryApplication.diary.repository;
 
 import diaryApplication.diary.domain.friend.Friend;
 import diaryApplication.diary.domain.member.Member;
+import diaryApplication.diary.domain.member.MemberDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -25,36 +26,32 @@ public class FriendRepository {
         friend2.isAccept(true);
     }
 
-    public List<Long> findAll(Long id) { // 친구 조회
+    public List<MemberDto> findAll(Long id) { // 친구 조회
         List<Friend> friends = em.createQuery("SELECT f FROM Friend f WHERE f.memberId_1 = :id and f.accept = true", Friend.class)
                 .setParameter("id", id)
                 .getResultList();
-        List<Long> memberId = new ArrayList<>();
+        MemberDto memberDto = new MemberDto();
+        List<MemberDto> memberDtos = new ArrayList<>();
 
         for (Friend friend : friends) {
-            memberId.add(em.find(Member.class, friend.getMemberId_2()).getId());
+            memberDto.findMemberDtos(friend.getMemberId_2());
+            memberDtos.add(memberDto);
         }
 
-        return memberId;
+        return memberDtos;
     }
 
-    public void remove(Long memberId_1, Long memberId_2) { // 친구 삭제
-        Friend friend1 = em.createQuery("SELECT f FROM Friend f WHERE f.memberId_1 = :memberId_1 and f.memberId_2 = :memberId_2",
-                Friend.class)
-                .setParameter("memberId_1", memberId_1)
-                .setParameter("memberId_2", memberId_2)
-                .getSingleResult();
-        Friend friend2 = em.createQuery("SELECT f FROM Friend f WHERE f.memberId_1 = :memberId_2 and f.memberId_2 = :memberId_1",
+    public void remove(Long memberId_1, Member memberId_2) { // 친구 삭제
+        Friend friend = em.createQuery("SELECT f FROM Friend f WHERE f.memberId_1 = :memberId_1 and f.memberId_2 = :memberId_2",
                 Friend.class)
                 .setParameter("memberId_1", memberId_1)
                 .setParameter("memberId_2", memberId_2)
                 .getSingleResult();
 
-        em.remove(friend1);
-        em.remove(friend2);
+        em.remove(friend);
     }
 
-    public Friend findSet(Long memberId_1, Long memberId_2) {
+    public Friend findSet(Long memberId_1, Member memberId_2) {
         Friend friend = em.createQuery("SELECT f FROM Friend f WHERE f.memberId_1 = :memberId_1 and f.memberId_2 = :memberId_2",
                 Friend.class)
                 .setParameter("memberId_1", memberId_1)
