@@ -32,6 +32,11 @@ public class CategoryController {
         return new ResponseEntity(categoryService.findAll(),HttpStatus.OK);
     }
 
+    @GetMapping("/member/list")
+    public ResponseEntity<List<CategoryDto>> findByMemberId(@RequestParam("id") Long id){
+        return new ResponseEntity(categoryService.findMemberCategory(id),HttpStatus.OK);
+    }
+
     @PutMapping
     public ResponseEntity updateCategory(@RequestParam("changeId") int id, @RequestParam("name") String name){
         categoryService.updateCategory(id,name);

@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
@@ -21,10 +22,18 @@ public class MemberRepository {
     }
 
     public Member findById(Long id){
-        return em.find(Member.class,id);
+        Member member = em.find(Member.class,id);
+        return member;
     }
 
     public void remove(Long id){
+        List<MemberCategoryRelation> relationList = em.createQuery(
+                "select r from MemberCategoryRelation r where r.memberId=:memberId")
+                .setParameter("memberId",findById(id))
+                .getResultList();
+        for(MemberCategoryRelation relation :relationList){
+            em.remove(relation);
+        }
         em.remove(findById(id));
     }
 }

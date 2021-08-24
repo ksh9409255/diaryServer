@@ -15,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Transactional
 @SpringBootTest
-@Rollback(value = false)
 class MemberServiceTest {
 
     @Autowired
@@ -52,6 +51,8 @@ class MemberServiceTest {
 
     @Test
     void deleteMember() {
+        CategoryDto category = new CategoryDto("potato");
+        categoryService.register(category);
         MemberDto memberDto1 = new MemberDto(1L,"KIM",1);
         memberRepository.save(memberDto1.toEntity());
         memberRepository.remove(1L);

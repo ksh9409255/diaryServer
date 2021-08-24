@@ -39,11 +39,11 @@ class EmoticonServiceTest {
     void registerMemberEmo() {
         CategoryDto category = new CategoryDto(1,"potato");
         categoryService.register(category);
-        EmoticonDto emoticonDto1 = new EmoticonDto(1,"angry potato",category,"angry");
+        EmoticonDto emoticonDto1 = new EmoticonDto(2,"angry potato",category,"angry");
         emoticonService.register(emoticonDto1);
-        EmoticonDto emoticonDto2 = new EmoticonDto(2,"happy potato",category,"happy");
+        EmoticonDto emoticonDto2 = new EmoticonDto(3,"happy potato",category,"happy");
         emoticonService.register(emoticonDto2);
-        Member member = new Member();
+        Member member = new Member(1L,"KIM",1);
         memberRepository.save(member);
         emoticonService.initMemberEmoticon(1L,1);
     }
