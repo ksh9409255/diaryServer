@@ -2,9 +2,13 @@ package diaryApplication.diary.service;
 
 import diaryApplication.diary.domain.friend.Friend;
 import diaryApplication.diary.domain.friend.FriendDto;
+import diaryApplication.diary.domain.member.Member;
 import diaryApplication.diary.domain.member.MemberDto;
 import diaryApplication.diary.repository.FriendRepository;
+import diaryApplication.diary.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -16,8 +20,13 @@ import java.util.List;
 public class FriendService {
 
     private final FriendRepository friendRepository;
+    private final MemberRepository memberRepository;
 
     public void add(FriendDto friendDto) {
+        if(memberRepository.findByNickname(friendDto.getMemberId_2().getNickname()) == null) {
+            return ;
+        }
+
         Friend friend1 = new Friend();
         Friend friend2 = new Friend();
 

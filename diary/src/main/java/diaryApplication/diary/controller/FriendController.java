@@ -20,17 +20,11 @@ import java.util.List;
 public class FriendController {
 
     private final FriendService friendService;
-    private final MemberRepository memberRepository;
 
     @PostMapping("/friend/add")
     public ResponseEntity add(@RequestBody FriendDto friendDto) {
-        if(memberRepository.findByNickname(friendDto.getMemberId_2().getNickname()) == null) {
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
-        }
-        else {
-            friendService.add(friendDto);
-            return new ResponseEntity(HttpStatus.OK);
-        }
+        friendService.add(friendDto);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @PostMapping("/friend/save")
