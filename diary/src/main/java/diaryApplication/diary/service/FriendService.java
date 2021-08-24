@@ -22,10 +22,8 @@ public class FriendService {
     private final FriendRepository friendRepository;
     private final MemberRepository memberRepository;
 
-    public void add(FriendDto friendDto) {
-        if(memberRepository.findByNickname(friendDto.getMemberId_2().getNickname()) == null) {
-            return ;
-        }
+    public ResponseEntity add(FriendDto friendDto) {
+        memberRepository.findByNickname(friendDto.getMemberId_2().getNickname());
 
         Friend friend1 = new Friend();
         Friend friend2 = new Friend();
@@ -34,6 +32,8 @@ public class FriendService {
         friend2.add(friendDto.getMemberId_2(), friendDto.getMemberId_1(), friendDto.getMemberId_2().getId());
 
         friendRepository.add(friend1, friend2);
+
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     public void save(FriendDto friendDto) {

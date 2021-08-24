@@ -58,12 +58,16 @@ public class MemberRepository {
     /**
      * FriendController에서 닉네임 존재 여부 확인을 위한 메서드
      */
-    public Member findByNickname(String nickname) {
-        Member member = em.createQuery("SELECT m FROM Member m WHERE m.nickname = :nickname", Member.class)
-                .setParameter("nickname", nickname)
-                .getSingleResult();
+    public void findByNickname(String nickname) {
+        Member member;
 
-        return member;
+        try {
+            em.createQuery("SELECT m FROM Member m WHERE m.nickname = :nickname", Member.class)
+                    .setParameter("nickname", nickname)
+                    .getSingleResult();
+        } catch (Exception e) {
+           new IllegalStateException("존재하지 않는 회원입니다.");
+        }
     }
 
     public Boolean validNickName(String name) {

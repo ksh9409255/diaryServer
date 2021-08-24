@@ -4,6 +4,8 @@ import diaryApplication.diary.domain.friend.Friend;
 import diaryApplication.diary.domain.member.Member;
 import diaryApplication.diary.domain.member.MemberDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

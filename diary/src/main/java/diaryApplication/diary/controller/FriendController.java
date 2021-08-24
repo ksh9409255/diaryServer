@@ -23,8 +23,7 @@ public class FriendController {
 
     @PostMapping("/friend/add")
     public ResponseEntity add(@RequestBody FriendDto friendDto) {
-        friendService.add(friendDto);
-        return new ResponseEntity(HttpStatus.OK);
+        return friendService.add(friendDto);
     }
 
     @PostMapping("/friend/save")
