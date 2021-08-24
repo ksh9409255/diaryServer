@@ -1,6 +1,7 @@
 package diaryApplication.diary.controller;
 
 import diaryApplication.diary.domain.emoticon.EmoticonDto;
+import diaryApplication.diary.domain.member.MemberDto;
 import diaryApplication.diary.service.EmoticonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,9 +23,9 @@ public class EmoticonController {
     }
 
     @PostMapping("/init")
-    public ResponseEntity emoticonInit(@RequestParam("memberId") Long memberId,
-                                       @RequestParam("categoryId") int categoryId){
-        emoticonService.initMemberEmoticon(memberId,categoryId);
+    public ResponseEntity emoticonInit(@RequestBody MemberDto memberDto){
+        System.out.println("init");
+        emoticonService.initMemberEmoticon(memberDto);
         return new ResponseEntity(HttpStatus.OK);
     }
 

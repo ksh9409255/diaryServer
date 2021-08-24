@@ -20,6 +20,7 @@ public class MemberController {
 
     @PostMapping
     public ResponseEntity registerMember(@RequestBody MemberDto member){
+        System.out.println("save");
         memberService.registerMember(member);
         return new ResponseEntity(HttpStatus.OK);
     }

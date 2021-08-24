@@ -45,7 +45,7 @@ class EmoticonServiceTest {
         emoticonService.register(emoticonDto2);
         Member member = new Member(1L,"KIM",1);
         memberRepository.save(member);
-        emoticonService.initMemberEmoticon(1L,1);
+        //emoticonService.initMemberEmoticon(1L,1);
     }
 
     @Test
