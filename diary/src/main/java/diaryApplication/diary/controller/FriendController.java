@@ -1,9 +1,14 @@
 package diaryApplication.diary.controller;
 
 import diaryApplication.diary.domain.friend.FriendDto;
+import diaryApplication.diary.domain.member.Member;
 import diaryApplication.diary.domain.member.MemberDto;
+import diaryApplication.diary.repository.FriendRepository;
+import diaryApplication.diary.repository.MemberRepository;
 import diaryApplication.diary.service.FriendService;
+import diaryApplication.diary.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,11 +20,17 @@ import java.util.List;
 public class FriendController {
 
     private final FriendService friendService;
+    private final MemberRepository memberRepository;
 
     @PostMapping("/friend/add")
     public ResponseEntity add(@RequestBody FriendDto friendDto) {
-        friendService.add(friendDto);
-        return new ResponseEntity(HttpStatus.OK);
+        if(memberRepository.findByNickname(friendDto.getMemberId_2().getNickname()) == null) {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+        else {
+            friendService.add(friendDto);
+            return new ResponseEntity(HttpStatus.OK);
+        }
     }
 
     @PostMapping("/friend/save")

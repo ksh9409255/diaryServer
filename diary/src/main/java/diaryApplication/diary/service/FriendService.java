@@ -42,4 +42,8 @@ public class FriendService {
         friendRepository.remove(friendDto.getMemberId_1().getId(), friendDto.getMemberId_2());
         friendRepository.remove(friendDto.getMemberId_2().getId(), friendDto.getMemberId_1());
     }
+
+    public Friend findById(FriendDto friendDto) {
+        return friendRepository.findById(friendDto.getMemberId_1().getId(), friendDto.getMemberId_2());
+    }
 }

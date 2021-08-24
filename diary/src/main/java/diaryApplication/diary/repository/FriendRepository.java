@@ -51,6 +51,10 @@ public class FriendRepository {
         em.remove(friend);
     }
 
+
+    /**
+     * 친구 수락을 위해 생성한 메서드로, Friend 테이블에 올라가 있는 두개의 튜플을 뽑아내는 메서드
+     */
     public Friend findSet(Long memberId_1, Member memberId_2) {
         Friend friend = em.createQuery("SELECT f FROM Friend f WHERE f.memberId_1 = :memberId_1 and f.memberId_2 = :memberId_2",
                 Friend.class)
@@ -59,5 +63,24 @@ public class FriendRepository {
                 .getSingleResult();
 
         return friend;
+    }
+
+    /**
+     * 중복으로 친구 신청을 한 경우 혹은 친구 상태임에도 친구 추가를 하려고 한 경우에 실행되는 메서드로,
+     * memberId를 통해 Friend 테이블에 튜플이 있는지 확인하는 용도
+     */
+    public Friend findById(Long memberId_1, Member memberId_2) {
+        Friend friend = em.createQuery("SELECT f FROM Friend f WHERE f.memberId_1 = :memberId_1 and f.memberId_2 = :memberId_2",
+                Friend.class)
+                .setParameter("memberId_1", memberId_1)
+                .setParameter("memberId_2", memberId_2)
+                .getSingleResult();
+
+        if(friend == null) {
+            return null;
+        }
+        else {
+            return friend;
+        }
     }
 }
