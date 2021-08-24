@@ -27,4 +27,9 @@ public class Member {
         this.nickname = nickname;
         this.categoryId = categoryId;
     }
+
+    public void updateMember(String nickname, int categoryId){
+        this.nickname = nickname;
+        this.categoryId = categoryId;
+    }
 }

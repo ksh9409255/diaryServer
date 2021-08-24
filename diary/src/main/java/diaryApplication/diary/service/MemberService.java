@@ -45,4 +45,9 @@ public class MemberService {
     public void deleteMember(Long id){
         memberRepository.remove(id);
     }
+
+    public void updateMember(MemberDto memberDto){
+        Member member = memberRepository.findById(memberDto.getId());
+        member.updateMember(memberDto.getNickName(),memberDto.getCategoryId());
+    }
 }

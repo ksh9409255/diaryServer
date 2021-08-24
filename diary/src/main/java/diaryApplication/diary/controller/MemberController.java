@@ -35,4 +35,10 @@ public class MemberController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
+    @PutMapping
+    public ResponseEntity updateMember(@RequestBody MemberDto member){
+        memberService.updateMember(member);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
 }

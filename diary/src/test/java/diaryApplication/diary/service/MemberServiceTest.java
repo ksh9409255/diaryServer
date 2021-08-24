@@ -2,6 +2,7 @@ package diaryApplication.diary.service;
 
 import diaryApplication.diary.domain.category.Category;
 import diaryApplication.diary.domain.category.CategoryDto;
+import diaryApplication.diary.domain.member.Member;
 import diaryApplication.diary.domain.member.MemberDto;
 import diaryApplication.diary.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
@@ -53,5 +54,13 @@ class MemberServiceTest {
         MemberDto memberDto1 = new MemberDto(1L,"KIM",1);
         memberRepository.save(memberDto1.toEntity());
         memberRepository.remove(1L);
+    }
+
+    @Test
+    void updateMember() {
+        MemberDto memberDto1 = new MemberDto(1L,"KIM",1);
+        memberRepository.save(memberDto1.toEntity());
+        memberService.updateMember(new MemberDto(1L,"SEOR",2));
+        System.out.println(memberService.findById(1L).getNickName());
     }
 }
