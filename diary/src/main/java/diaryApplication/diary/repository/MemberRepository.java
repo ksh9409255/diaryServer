@@ -1,6 +1,7 @@
 package diaryApplication.diary.repository;
 
 import diaryApplication.diary.domain.category.Category;
+import diaryApplication.diary.domain.emoticon.Emoticon;
 import diaryApplication.diary.domain.member.Member;
 import diaryApplication.diary.domain.member_category.MemberCategoryRelation;
 import lombok.RequiredArgsConstructor;
@@ -13,12 +14,19 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberRepository {
     private final EntityManager em;
+    private final EmoticonRepository emoticonRepository;
+    private final CategoryRepository categoryRepository;
 
     public void save(Member member){
         Category category = em.find(Category.class,member.getCategoryId());
         MemberCategoryRelation relation = new MemberCategoryRelation(member,category);
         em.persist(member);
         em.persist(relation);
+        List<Emoticon> emoticonList = emoticonRepository
+                .findByCategoryId(categoryRepository.findById(member.getCategoryId()));
+        for(Emoticon emoticon : emoticonList){
+            emoticonRepository.saveMemberEmoticon(member,emoticon);
+        }
     }
 
     public Member findById(Long id){
