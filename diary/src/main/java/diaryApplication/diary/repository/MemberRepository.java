@@ -18,4 +18,8 @@ public class MemberRepository {
     public Member findById(Long id){
         return em.find(Member.class,id);
     }
+
+    public void remove(Long id){
+        em.remove(findById(id));
+    }
 }

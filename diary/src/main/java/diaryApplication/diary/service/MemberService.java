@@ -41,4 +41,8 @@ public class MemberService {
         }
         return Boolean.TRUE;
     }
+
+    public void deleteMember(Long id){
+        memberRepository.remove(id);
+    }
 }

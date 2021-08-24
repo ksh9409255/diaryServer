@@ -29,4 +29,10 @@ public class MemberController {
         return new ResponseEntity(memberService.checkRegister(id), HttpStatus.OK);
     }
 
+    @DeleteMapping
+    public ResponseEntity deleteMember(@RequestParam("id") Long id){
+        memberService.deleteMember(id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
 }
