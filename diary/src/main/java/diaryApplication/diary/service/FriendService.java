@@ -57,11 +57,18 @@ public class FriendService {
         return friendRepository.findAll(id);
     }
 
-    public void remove(FriendAndroidDto friendAndroidDto) {
-        Member member = memberRepository.findByNickname(friendAndroidDto.getMemberId_2_nickname());
+    public ResponseEntity<Boolean> remove(FriendAndroidDto friendAndroidDto) {
+        if(!(memberRepository.validNickName(friendAndroidDto.getMemberId_2_nickname()))) {
+            Member member = memberRepository.findByNickname(friendAndroidDto.getMemberId_2_nickname());
 
-        friendRepository.remove(friendAndroidDto.getMemberId_1().getId(), member);
-        friendRepository.remove(member.getId(), friendAndroidDto.getMemberId_1());
+            friendRepository.remove(friendAndroidDto.getMemberId_1().getId(), member);
+            friendRepository.remove(member.getId(), friendAndroidDto.getMemberId_1());
+
+            return new ResponseEntity(Boolean.TRUE, HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity(Boolean.FALSE, HttpStatus.NOT_FOUND); // 유저가 없는 경우
+        }
     }
 
     public List<MemberDto> findRequest(Long id) {

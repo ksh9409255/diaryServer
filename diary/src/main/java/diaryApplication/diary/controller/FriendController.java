@@ -35,8 +35,7 @@ public class FriendController {
 
     @PostMapping("/friend/remove")
     public ResponseEntity<Boolean> remove(@RequestBody FriendAndroidDto friendAndroidDto) {
-        friendService.remove(friendAndroidDto);
-        return new ResponseEntity(Boolean.TRUE, HttpStatus.OK);
+        return friendService.remove(friendAndroidDto);
     }
 
     /**
