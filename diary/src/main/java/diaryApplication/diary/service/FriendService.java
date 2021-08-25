@@ -1,6 +1,7 @@
 package diaryApplication.diary.service;
 
 import diaryApplication.diary.domain.friend.Friend;
+import diaryApplication.diary.domain.friend.FriendAddDto;
 import diaryApplication.diary.domain.friend.FriendDto;
 import diaryApplication.diary.domain.member.Member;
 import diaryApplication.diary.domain.member.MemberDto;
@@ -22,14 +23,15 @@ public class FriendService {
     private final FriendRepository friendRepository;
     private final MemberRepository memberRepository;
 
-    public ResponseEntity<Boolean> add(FriendDto friendDto) {
-        if(!(memberRepository.validNickName(friendDto.getMemberId_2().getNickname()))) {
-            if(friendRepository.findById(friendDto.getMemberId_1().getId(), friendDto.getMemberId_2())) {
+    public ResponseEntity<Boolean> add(FriendAddDto friendAddDto) {
+        if(!(memberRepository.validNickName(friendAddDto.getMemberId_2_nickname()))) {
+            if(friendRepository.findById(friendAddDto.getMemberId_1().getId(), friendAddDto.getMemberId_2_nickname())) {
                 Friend friend1 = new Friend();
                 Friend friend2 = new Friend();
+                Member member = memberRepository.findByNickname(friendAddDto.getMemberId_2_nickname());
 
-                friend1.add(friendDto.getMemberId_1(), friendDto.getMemberId_2(), friendDto.getMemberId_2().getId());
-                friend2.add(friendDto.getMemberId_2(), friendDto.getMemberId_1(), friendDto.getMemberId_2().getId());
+                friend1.add(friendAddDto.getMemberId_1(), member, member.getId());
+                friend2.add(member, friendAddDto.getMemberId_1(), member.getId());
 
                 friendRepository.add(friend1, friend2);
 

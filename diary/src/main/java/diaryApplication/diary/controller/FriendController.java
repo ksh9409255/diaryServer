@@ -1,5 +1,6 @@
 package diaryApplication.diary.controller;
 
+import diaryApplication.diary.domain.friend.FriendAddDto;
 import diaryApplication.diary.domain.friend.FriendDto;
 import diaryApplication.diary.domain.member.Member;
 import diaryApplication.diary.domain.member.MemberDto;
@@ -22,8 +23,8 @@ public class FriendController {
     private final FriendService friendService;
 
     @PostMapping("/friend/add")
-    public ResponseEntity<Boolean> add(@RequestBody FriendDto friendDto) {
-        return friendService.add(friendDto);
+    public ResponseEntity<Boolean> add(@RequestBody FriendAddDto friendAddDto) {
+        return friendService.add(friendAddDto);
     }
 
     @PostMapping("/friend/save")

@@ -67,4 +67,12 @@ public class MemberRepository {
         }
         return Boolean.FALSE;
     }
+
+    public Member findByNickname(String nickname) {
+        Member member = em.createQuery("SELECT m FROM Member m WHERE m.nickname = :nickname", Member.class)
+                .setParameter("nickname", nickname)
+                .getSingleResult();
+
+        return member;
+    }
 }
