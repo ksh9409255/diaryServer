@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,18 +72,18 @@ public class FriendRepository {
      * 중복으로 친구 신청을 한 경우 혹은 친구 상태임에도 친구 추가를 하려고 한 경우에 실행되는 메서드로,
      * memberId를 통해 Friend 테이블에 튜플이 있는지 확인하는 용도
      */
-    public Friend findById(Long memberId_1, Member memberId_2) {
-        Friend friend = em.createQuery("SELECT f FROM Friend f WHERE f.memberId_1 = :memberId_1 and f.memberId_2 = :memberId_2",
-                Friend.class)
-                .setParameter("memberId_1", memberId_1)
-                .setParameter("memberId_2", memberId_2)
-                .getSingleResult();
+    public Boolean findById(Long memberId_1, Member memberId_2) {
+        Friend friend;
 
-        if(friend == null) {
-            return null;
+        try {
+            em.createQuery("SELECT f FROM Friend f WHERE f.memberId_1 = :memberId_1 and f.memberId_2 = :memberId_2",
+                    Friend.class)
+                    .setParameter("memberId_1", memberId_1)
+                    .setParameter("memberId_2", memberId_2)
+                    .getSingleResult();
+        } catch (NoResultException e){
+            return Boolean.TRUE;
         }
-        else {
-            return friend;
-        }
+        return Boolean.FALSE;
     }
 }

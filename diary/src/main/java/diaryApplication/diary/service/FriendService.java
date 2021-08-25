@@ -24,15 +24,20 @@ public class FriendService {
 
     public ResponseEntity add(FriendDto friendDto) {
         if(!(memberRepository.validNickName(friendDto.getMemberId_2().getNickname()))) {
-            Friend friend1 = new Friend();
-            Friend friend2 = new Friend();
+            if(friendRepository.findById(friendDto.getMemberId_1().getId(), friendDto.getMemberId_2())) {
+                Friend friend1 = new Friend();
+                Friend friend2 = new Friend();
 
-            friend1.add(friendDto.getMemberId_1(), friendDto.getMemberId_2(), friendDto.getMemberId_2().getId());
-            friend2.add(friendDto.getMemberId_2(), friendDto.getMemberId_1(), friendDto.getMemberId_2().getId());
+                friend1.add(friendDto.getMemberId_1(), friendDto.getMemberId_2(), friendDto.getMemberId_2().getId());
+                friend2.add(friendDto.getMemberId_2(), friendDto.getMemberId_1(), friendDto.getMemberId_2().getId());
 
-            friendRepository.add(friend1, friend2);
+                friendRepository.add(friend1, friend2);
 
-            return new ResponseEntity(HttpStatus.OK);
+                return new ResponseEntity(HttpStatus.OK);
+            }
+            else {
+                return new ResponseEntity(HttpStatus.BAD_REQUEST);
+            }
         }
         else {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
@@ -53,9 +58,5 @@ public class FriendService {
     public void remove(FriendDto friendDto) {
         friendRepository.remove(friendDto.getMemberId_1().getId(), friendDto.getMemberId_2());
         friendRepository.remove(friendDto.getMemberId_2().getId(), friendDto.getMemberId_1());
-    }
-
-    public Friend findById(FriendDto friendDto) {
-        return friendRepository.findById(friendDto.getMemberId_1().getId(), friendDto.getMemberId_2());
     }
 }
