@@ -77,6 +77,7 @@ public class MemberRepository {
                     .setParameter("nickname",name)
                     .getSingleResult();
         }catch (NoResultException e){
+            e.printStackTrace();
             return Boolean.TRUE;
         }
         return Boolean.FALSE;
