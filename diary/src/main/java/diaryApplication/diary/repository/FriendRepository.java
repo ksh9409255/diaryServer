@@ -60,6 +60,27 @@ public class FriendRepository {
         em.remove(friend);
     }
 
+    public List<MemberDto> findRequest(Long id) {
+        List<Friend> friends;
+        List<MemberDto> memberDtos = new ArrayList<>();
+
+        try {
+            friends = em.createQuery("SELECT f FROM Friend f WHERE f.memberId_1 = :id and f.targetId = :id and f.accept = false",
+                    Friend.class)
+                    .setParameter("id", id)
+                    .getResultList();
+        } catch (NoResultException e) {
+            return null;
+        }
+
+        for (Friend friend : friends) {
+            MemberDto memberDto = new MemberDto();
+            memberDto.findMemberDtos(friend.getMemberId_2());
+            memberDtos.add(memberDto);
+        }
+
+        return memberDtos;
+    }
 
     /**
      * 친구 수락을 위해 생성한 메서드로, Friend 테이블에 올라가 있는 두개의 튜플을 뽑아내는 메서드

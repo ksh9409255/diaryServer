@@ -33,7 +33,7 @@ public class FriendController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @GetMapping("/friend")
+    @GetMapping("/friend/find")
     public ResponseEntity<List<MemberDto>> findAll(@RequestParam("id") Long id) {
         return new ResponseEntity<>(friendService.findAll(id), HttpStatus.OK);
     }
@@ -42,5 +42,13 @@ public class FriendController {
     public ResponseEntity remove(@RequestBody FriendDto friendDto) {
         friendService.remove(friendDto);
         return new ResponseEntity(HttpStatus.OK);
+    }
+
+    /**
+     * 친구 요청 List
+     */
+    @GetMapping("/friend/request")
+    public ResponseEntity<List<MemberDto>> findRequest(@RequestParam("id") Long id) {
+        return new ResponseEntity<>(friendService.findRequest(id), HttpStatus.OK);
     }
 }
