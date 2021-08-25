@@ -30,10 +30,16 @@ public class FriendRepository {
     }
 
     public List<MemberDto> findAll(Long id) { // 친구 조회
-        List<Friend> friends = em.createQuery("SELECT f FROM Friend f WHERE f.memberId_1 = :id and f.accept = true", Friend.class)
-                .setParameter("id", id)
-                .getResultList();
+        List<Friend> friends;
         List<MemberDto> memberDtos = new ArrayList<>();
+
+        try {
+            friends = em.createQuery("SELECT f FROM Friend f WHERE f.memberId_1 = :id and f.accept = true", Friend.class)
+                    .setParameter("id", id)
+                    .getResultList();
+        } catch (NoResultException e) {
+            return null;
+        }
 
         for (Friend friend : friends) {
             MemberDto memberDto = new MemberDto();
@@ -76,7 +82,7 @@ public class FriendRepository {
         Friend friend;
 
         try {
-            em.createQuery("SELECT f FROM Friend f WHERE f.memberId_1 = :memberId_1 and f.memberId_2 = :memberId_2",
+            friend = em.createQuery("SELECT f FROM Friend f WHERE f.memberId_1 = :memberId_1 and f.memberId_2 = :memberId_2",
                     Friend.class)
                     .setParameter("memberId_1", memberId_1)
                     .setParameter("memberId_2", memberId_2)
