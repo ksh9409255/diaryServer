@@ -1,7 +1,7 @@
 package diaryApplication.diary.service;
 
 import diaryApplication.diary.domain.friend.Friend;
-import diaryApplication.diary.domain.friend.FriendAddDto;
+import diaryApplication.diary.domain.friend.FriendAndroidDto;
 import diaryApplication.diary.domain.friend.FriendDto;
 import diaryApplication.diary.domain.member.Member;
 import diaryApplication.diary.domain.member.MemberDto;
@@ -23,15 +23,15 @@ public class FriendService {
     private final FriendRepository friendRepository;
     private final MemberRepository memberRepository;
 
-    public ResponseEntity<Boolean> add(FriendAddDto friendAddDto) {
-        if(!(memberRepository.validNickName(friendAddDto.getMemberId_2_nickname()))) {
-            if(friendRepository.findById(friendAddDto.getMemberId_1().getId(), friendAddDto.getMemberId_2_nickname())) {
+    public ResponseEntity<Boolean> add(FriendAndroidDto friendAndroidDto) {
+        if(!(memberRepository.validNickName(friendAndroidDto.getMemberId_2_nickname()))) {
+            if(friendRepository.findById(friendAndroidDto.getMemberId_1().getId(), friendAndroidDto.getMemberId_2_nickname())) {
                 Friend friend1 = new Friend();
                 Friend friend2 = new Friend();
-                Member member = memberRepository.findByNickname(friendAddDto.getMemberId_2_nickname());
+                Member member = memberRepository.findByNickname(friendAndroidDto.getMemberId_2_nickname());
 
-                friend1.add(friendAddDto.getMemberId_1(), member, member.getId());
-                friend2.add(member, friendAddDto.getMemberId_1(), member.getId());
+                friend1.add(friendAndroidDto.getMemberId_1(), member, member.getId());
+                friend2.add(member, friendAndroidDto.getMemberId_1(), member.getId());
 
                 friendRepository.add(friend1, friend2);
 
@@ -57,9 +57,11 @@ public class FriendService {
         return friendRepository.findAll(id);
     }
 
-    public void remove(FriendDto friendDto) {
-        friendRepository.remove(friendDto.getMemberId_1().getId(), friendDto.getMemberId_2());
-        friendRepository.remove(friendDto.getMemberId_2().getId(), friendDto.getMemberId_1());
+    public void remove(FriendAndroidDto friendAndroidDto) {
+        Member member = memberRepository.findByNickname(friendAndroidDto.getMemberId_2_nickname());
+
+        friendRepository.remove(friendAndroidDto.getMemberId_1().getId(), member);
+        friendRepository.remove(member.getId(), friendAndroidDto.getMemberId_1());
     }
 
     public List<MemberDto> findRequest(Long id) {

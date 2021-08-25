@@ -1,15 +1,10 @@
 package diaryApplication.diary.controller;
 
-import diaryApplication.diary.domain.friend.FriendAddDto;
+import diaryApplication.diary.domain.friend.FriendAndroidDto;
 import diaryApplication.diary.domain.friend.FriendDto;
-import diaryApplication.diary.domain.member.Member;
 import diaryApplication.diary.domain.member.MemberDto;
-import diaryApplication.diary.repository.FriendRepository;
-import diaryApplication.diary.repository.MemberRepository;
 import diaryApplication.diary.service.FriendService;
-import diaryApplication.diary.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,8 +18,8 @@ public class FriendController {
     private final FriendService friendService;
 
     @PostMapping("/friend/add")
-    public ResponseEntity<Boolean> add(@RequestBody FriendAddDto friendAddDto) {
-        return friendService.add(friendAddDto);
+    public ResponseEntity<Boolean> add(@RequestBody FriendAndroidDto friendAndroidDto) {
+        return friendService.add(friendAndroidDto);
     }
 
     @PostMapping("/friend/save")
@@ -39,8 +34,8 @@ public class FriendController {
     }
 
     @PostMapping("/friend/remove")
-    public ResponseEntity remove(@RequestBody FriendDto friendDto) {
-        friendService.remove(friendDto);
+    public ResponseEntity remove(@RequestBody FriendAndroidDto friendAndroidDto) {
+        friendService.remove(friendAndroidDto);
         return new ResponseEntity(HttpStatus.OK);
     }
 
