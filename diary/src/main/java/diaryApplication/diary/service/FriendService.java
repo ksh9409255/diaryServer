@@ -22,7 +22,7 @@ public class FriendService {
     private final FriendRepository friendRepository;
     private final MemberRepository memberRepository;
 
-    public ResponseEntity add(FriendDto friendDto) {
+    public ResponseEntity<Boolean> add(FriendDto friendDto) {
         if(!(memberRepository.validNickName(friendDto.getMemberId_2().getNickname()))) {
             if(friendRepository.findById(friendDto.getMemberId_1().getId(), friendDto.getMemberId_2())) {
                 Friend friend1 = new Friend();
@@ -33,14 +33,14 @@ public class FriendService {
 
                 friendRepository.add(friend1, friend2);
 
-                return new ResponseEntity(HttpStatus.OK);
+                return new ResponseEntity(Boolean.TRUE, HttpStatus.OK);
             }
             else {
-                return new ResponseEntity(HttpStatus.BAD_REQUEST);
+                return new ResponseEntity(Boolean.FALSE, HttpStatus.BAD_REQUEST); // 중복 요청
             }
         }
         else {
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
+            return new ResponseEntity(Boolean.FALSE, HttpStatus.NOT_FOUND); // 유저가 없는 경우
         }
     }
 

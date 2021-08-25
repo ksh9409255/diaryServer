@@ -22,7 +22,7 @@ public class FriendController {
     private final FriendService friendService;
 
     @PostMapping("/friend/add")
-    public ResponseEntity add(@RequestBody FriendDto friendDto) {
+    public ResponseEntity<Boolean> add(@RequestBody FriendDto friendDto) {
         return friendService.add(friendDto);
     }
 
