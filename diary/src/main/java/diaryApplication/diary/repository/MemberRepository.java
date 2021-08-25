@@ -61,7 +61,7 @@ public class MemberRepository {
             member = em.createQuery("select m from Member m where m.nickname = :nickname", Member.class)
                     .setParameter("nickname",name)
                     .getSingleResult();
-        }catch (NoResultException e){
+        } catch (NoResultException e){
             e.printStackTrace();
             return Boolean.TRUE;
         }

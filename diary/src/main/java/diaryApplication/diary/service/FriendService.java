@@ -38,11 +38,11 @@ public class FriendService {
                 return new ResponseEntity(Boolean.TRUE, HttpStatus.OK);
             }
             else {
-                return new ResponseEntity(Boolean.FALSE, HttpStatus.BAD_REQUEST); // 중복 요청
+                return new ResponseEntity(Boolean.FALSE, HttpStatus.OK); // 중복 요청
             }
         }
         else {
-            return new ResponseEntity(Boolean.FALSE, HttpStatus.NOT_FOUND); // 유저가 없는 경우
+            return new ResponseEntity(Boolean.FALSE, HttpStatus.OK); // 유저가 없는 경우
         }
     }
 
@@ -67,7 +67,7 @@ public class FriendService {
             return new ResponseEntity(Boolean.TRUE, HttpStatus.OK);
         }
         else {
-            return new ResponseEntity(Boolean.FALSE, HttpStatus.NOT_FOUND); // 유저가 없는 경우
+            return new ResponseEntity(Boolean.FALSE, HttpStatus.OK); // 유저가 없는 경우
         }
     }
 
