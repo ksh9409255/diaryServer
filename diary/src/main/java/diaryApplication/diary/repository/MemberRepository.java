@@ -75,4 +75,14 @@ public class MemberRepository {
 
         return member;
     }
+
+    public Boolean checkRegister(Long id){
+        Member member= em.find(Member.class,id);
+        if(member==null){
+            return Boolean.FALSE;
+        }
+        else{
+            return Boolean.TRUE;
+        }
+    }
 }

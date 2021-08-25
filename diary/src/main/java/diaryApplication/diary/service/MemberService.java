@@ -30,16 +30,7 @@ public class MemberService {
      * @return : 회원가입 됨 - true
      */
     public Boolean checkRegister(Long id){
-        Member member;
-        try {
-            member = memberRepository.findById(id);
-            if(member==null){
-                return Boolean.FALSE;
-            }
-        }catch (NullPointerException e){
-            e.printStackTrace();
-        }
-        return Boolean.TRUE;
+        return memberRepository.checkRegister(id);
     }
 
     public void deleteMember(Long id){
