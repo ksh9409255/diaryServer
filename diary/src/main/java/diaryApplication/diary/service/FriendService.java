@@ -23,17 +23,20 @@ public class FriendService {
     private final MemberRepository memberRepository;
 
     public ResponseEntity add(FriendDto friendDto) {
-        memberRepository.findByNickname(friendDto.getMemberId_2().getNickname());
+        if(!(memberRepository.validNickName(friendDto.getMemberId_2().getNickname()))) {
+            Friend friend1 = new Friend();
+            Friend friend2 = new Friend();
 
-        Friend friend1 = new Friend();
-        Friend friend2 = new Friend();
+            friend1.add(friendDto.getMemberId_1(), friendDto.getMemberId_2(), friendDto.getMemberId_2().getId());
+            friend2.add(friendDto.getMemberId_2(), friendDto.getMemberId_1(), friendDto.getMemberId_2().getId());
 
-        friend1.add(friendDto.getMemberId_1(), friendDto.getMemberId_2(), friendDto.getMemberId_2().getId());
-        friend2.add(friendDto.getMemberId_2(), friendDto.getMemberId_1(), friendDto.getMemberId_2().getId());
+            friendRepository.add(friend1, friend2);
 
-        friendRepository.add(friend1, friend2);
-
-        return new ResponseEntity(HttpStatus.OK);
+            return new ResponseEntity(HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
     }
 
     public void save(FriendDto friendDto) {
