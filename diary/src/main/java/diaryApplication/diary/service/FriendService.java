@@ -24,7 +24,7 @@ public class FriendService {
     private final MemberRepository memberRepository;
 
     public ResponseEntity<Boolean> add(FriendAndroidDto friendAndroidDto) {
-        if(!(memberRepository.validNickName(friendAndroidDto.getMemberId_2_nickname()))) {
+        if(!((memberRepository.validNickName(friendAndroidDto.getMemberId_2_nickname())).booleanValue())) {
             if(friendRepository.findById(friendAndroidDto.getMemberId_1().getId(), friendAndroidDto.getMemberId_2_nickname())) {
                 Friend friend1 = new Friend();
                 Friend friend2 = new Friend();
@@ -58,7 +58,7 @@ public class FriendService {
     }
 
     public ResponseEntity<Boolean> remove(FriendAndroidDto friendAndroidDto) {
-        if(!(memberRepository.validNickName(friendAndroidDto.getMemberId_2_nickname()))) {
+        if(!((memberRepository.validNickName(friendAndroidDto.getMemberId_2_nickname())).booleanValue())) {
             Member member = memberRepository.findByNickname(friendAndroidDto.getMemberId_2_nickname());
 
             friendRepository.remove(friendAndroidDto.getMemberId_1().getId(), member);
