@@ -2,6 +2,7 @@ package diaryApplication.diary.repository;
 
 import diaryApplication.diary.domain.category.Category;
 import diaryApplication.diary.domain.emoticon.Emoticon;
+import diaryApplication.diary.domain.friend.Friend;
 import diaryApplication.diary.domain.member.Member;
 import diaryApplication.diary.domain.member_category.MemberCategoryRelation;
 import diaryApplication.diary.domain.member_emoticon.MemberEmoticonRelation;
@@ -52,6 +53,15 @@ public class MemberRepository {
         for(MemberEmoticonRelation relation :relationList2){
             em.remove(relation);
         }
+
+        List<Friend> friends = em.createQuery("select f from Friend where f.memberId_1=:memberId_1")
+                .setParameter("memberId_1",id)
+                .getResultList();
+
+        for(Friend friend : friends){
+            em.remove(friend);
+        }
+
         em.remove(findById(id));
     }
 
