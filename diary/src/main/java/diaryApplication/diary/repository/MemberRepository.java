@@ -54,8 +54,11 @@ public class MemberRepository {
             em.remove(relation);
         }
 
-        List<Friend> friends = em.createQuery("select f from Friend where f.memberId_1=:memberId_1")
+        Member member = findById(id);
+
+        List<Friend> friends = em.createQuery("select f from Friend f where f.memberId_1=:memberId_1 or f.memberId_2=:memberId_2")
                 .setParameter("memberId_1",id)
+                .setParameter("memberId_2",member)
                 .getResultList();
 
         for(Friend friend : friends){
