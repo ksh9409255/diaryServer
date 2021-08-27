@@ -33,7 +33,7 @@ public class DiaryController {
     }
 
     @GetMapping("/diary/remove")
-    public ResponseEntity remove(Long id) {
+    public ResponseEntity remove(@RequestParam("id") Long id) {
         diaryService.remove(id);
         return new ResponseEntity(HttpStatus.OK);
     }
