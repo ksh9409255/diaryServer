@@ -1,12 +1,15 @@
 package diaryApplication.diary.controller;
 
 import diaryApplication.diary.domain.diary.DiaryDto;
+import diaryApplication.diary.domain.diary.DiaryFindDto;
 import diaryApplication.diary.domain.diary.DiaryModifyDto;
 import diaryApplication.diary.service.DiaryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,8 +22,9 @@ public class DiaryController {
         return new ResponseEntity<>(diaryService.save(diaryDto), HttpStatus.OK);
     }
 
-    public void findAll() {
-
+    @GetMapping("/diary/findAll")
+    public ResponseEntity<List<DiaryFindDto>> findAll(@RequestParam("id") Long id) {
+        return new ResponseEntity<>(diaryService.findAll(id), HttpStatus.OK);
     }
 
     @GetMapping("/diary/findOne")

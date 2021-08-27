@@ -2,12 +2,16 @@ package diaryApplication.diary.repository;
 
 import diaryApplication.diary.domain.diary.Diary;
 import diaryApplication.diary.domain.diary.DiaryDto;
+import diaryApplication.diary.domain.diary.DiaryFindDto;
 import diaryApplication.diary.domain.diary.DiaryModifyDto;
 import diaryApplication.diary.domain.emoticon.Emoticon;
+import diaryApplication.diary.domain.member.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
@@ -20,8 +24,20 @@ public class DiaryRepository {
          return diary.getId();
     }
 
-    public void findAll() {
+    public List<DiaryFindDto> findAll(Long id) {
+        Member member = em.find(Member.class, id);
+        List<Diary> diaryList = em.createQuery("SELECT d FROM Diary d WHERE d.memberId = :member", Diary.class)
+                .setParameter("member", member)
+                .getResultList();
+        List<DiaryFindDto> diaryFindDtoList = new ArrayList<>();
 
+        for (Diary diary : diaryList) {
+            DiaryFindDto diaryFindDto = new DiaryFindDto(diary.getId(), diary.isOpen(),
+                    diary.getTitle(), diary.getDate(), diary.getEmoticonId().getId());
+            diaryFindDtoList.add(diaryFindDto);
+        }
+
+        return diaryFindDtoList;
     }
 
     public DiaryDto findOne(Long id) {

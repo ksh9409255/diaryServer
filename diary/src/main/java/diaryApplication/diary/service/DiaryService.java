@@ -2,6 +2,7 @@ package diaryApplication.diary.service;
 
 import diaryApplication.diary.domain.diary.Diary;
 import diaryApplication.diary.domain.diary.DiaryDto;
+import diaryApplication.diary.domain.diary.DiaryFindDto;
 import diaryApplication.diary.domain.diary.DiaryModifyDto;
 import diaryApplication.diary.domain.emoticon.Emoticon;
 import diaryApplication.diary.domain.member.Member;
@@ -12,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -32,8 +34,8 @@ public class DiaryService {
         return diaryRepository.save(diary);
     }
 
-    public void findAll() {
-
+    public List<DiaryFindDto> findAll(Long id) {
+        return diaryRepository.findAll(id);
     }
 
     public DiaryDto findOne(Long id) {
