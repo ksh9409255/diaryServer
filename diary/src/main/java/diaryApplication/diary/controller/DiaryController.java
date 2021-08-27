@@ -28,7 +28,7 @@ public class DiaryController {
     }
 
     @GetMapping("/diary/findOne")
-    public ResponseEntity<DiaryDto> findOne(@RequestParam("id") Long id) {
+    public ResponseEntity<DiaryDto> findOne(@RequestParam("id") Long id) { // 다이어리 Id
         return new ResponseEntity<>(diaryService.findOne(id), HttpStatus.OK);
     }
 
