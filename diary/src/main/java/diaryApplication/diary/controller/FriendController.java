@@ -45,4 +45,9 @@ public class FriendController {
     public ResponseEntity<List<MemberDto>> findRequest(@RequestParam("id") Long id) {
         return new ResponseEntity<>(friendService.findRequest(id), HttpStatus.OK);
     }
+
+    @GetMapping("/friend")
+    public ResponseEntity<MemberDto> getFriend(@RequestParam("id") Long id) {
+        return new ResponseEntity<>(friendService.getFriend(id), HttpStatus.OK);
+    }
 }

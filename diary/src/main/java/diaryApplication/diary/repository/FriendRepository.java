@@ -82,6 +82,13 @@ public class FriendRepository {
         return memberDtos;
     }
 
+    public MemberDto getFriend(Long id) {
+        Member member = em.find(Member.class, id);
+        MemberDto memberDto = new MemberDto(id, member.getNickname(), member.getCategoryId());
+
+        return memberDto;
+    }
+
     /**
      * 친구 수락을 위해 생성한 메서드로, Friend 테이블에 올라가 있는 두개의 튜플을 뽑아내는 메서드
      */

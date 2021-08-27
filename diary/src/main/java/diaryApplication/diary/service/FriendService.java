@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -73,5 +74,9 @@ public class FriendService {
 
     public List<MemberDto> findRequest(Long id) {
         return friendRepository.findRequest(id);
+    }
+
+    public MemberDto getFriend(Long id) {
+        return friendRepository.getFriend(id);
     }
 }
