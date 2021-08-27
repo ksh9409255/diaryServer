@@ -59,5 +59,6 @@ public class DiaryRepository {
         Emoticon emoticon = em.find(Emoticon.class, diaryModifyDto.getEmoticonId());
 
         diary.modify(diary, diaryModifyDto, emoticon);
+        em.persist(diary);
     }
 }
