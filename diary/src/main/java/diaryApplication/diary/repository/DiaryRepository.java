@@ -15,8 +15,9 @@ public class DiaryRepository {
 
     private final EntityManager em;
 
-    public void save(Diary diary) { // 일기 작성
+    public Long save(Diary diary) { // 일기 작성
          em.persist(diary);
+         return diary.getId();
     }
 
     public void findAll() {

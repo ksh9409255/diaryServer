@@ -15,9 +15,8 @@ public class DiaryController {
     private final DiaryService diaryService;
 
     @PostMapping("/diary/save")
-    public ResponseEntity save(@RequestBody DiaryDto diaryDto) {
-        diaryService.save(diaryDto);
-        return new ResponseEntity(HttpStatus.OK);
+    public ResponseEntity<Long> save(@RequestBody DiaryDto diaryDto) {
+        return new ResponseEntity<>(diaryService.save(diaryDto), HttpStatus.OK);
     }
 
     public void findAll() {

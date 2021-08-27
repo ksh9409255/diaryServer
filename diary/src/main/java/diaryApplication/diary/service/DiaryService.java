@@ -22,14 +22,14 @@ public class DiaryService {
     private final EmoticonRepository emoticonRepository;
     private final MemberRepository memberRepository;
 
-    public void save(DiaryDto diaryDto) {
+    public Long save(DiaryDto diaryDto) {
         Emoticon emoticon = emoticonRepository.findById(diaryDto.getEmoticonId());
         Member member = memberRepository.findById(diaryDto.getMemberId());
 
         Diary diary = new Diary();
         diary.save(diaryDto, emoticon, member);
 
-        diaryRepository.save(diary);
+        return diaryRepository.save(diary);
     }
 
     public void findAll() {

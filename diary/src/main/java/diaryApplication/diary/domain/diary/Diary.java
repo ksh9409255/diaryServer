@@ -21,7 +21,7 @@ public class Diary {
 
     @Column(nullable = false,length = 1000)// 글자 수 1000자 제한
     private String content;
-    private Date date;
+    private String date;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "emoticon_id")
