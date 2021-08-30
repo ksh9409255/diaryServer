@@ -4,11 +4,13 @@ import diaryApplication.diary.domain.friend.FriendAndroidDto;
 import diaryApplication.diary.domain.friend.FriendDto;
 import diaryApplication.diary.domain.member.MemberDto;
 import diaryApplication.diary.service.FriendService;
+import diaryApplication.diary.service.KakaoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -16,10 +18,17 @@ import java.util.List;
 public class FriendController {
 
     private final FriendService friendService;
+    private final KakaoService kakaoService;
 
     @PostMapping("/friend/add")
-    public ResponseEntity<Boolean> add(@RequestBody FriendAndroidDto friendAndroidDto) {
-        return friendService.add(friendAndroidDto);
+    public ResponseEntity<Boolean> add(@RequestBody FriendAndroidDto friendAndroidDto, HttpServletRequest req) {
+        if(kakaoService.getUserInfo(req.getHeader("Authorization")).get("id").equals(String.valueOf(1860095703L))){
+            return friendService.add(friendAndroidDto);
+        }
+        else{
+            System.out.println("=================================");
+            return new ResponseEntity(Boolean.FALSE,HttpStatus.OK);
+        }
     }
 
     @PostMapping("/friend/save")
