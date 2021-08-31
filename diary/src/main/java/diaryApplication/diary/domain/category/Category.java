@@ -12,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Category {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     @Column(name = "category_id")
     private int id;
     private String name;

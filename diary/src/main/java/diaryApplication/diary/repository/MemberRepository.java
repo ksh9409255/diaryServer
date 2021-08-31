@@ -1,6 +1,7 @@
 package diaryApplication.diary.repository;
 
 import diaryApplication.diary.domain.category.Category;
+import diaryApplication.diary.domain.diary.Diary;
 import diaryApplication.diary.domain.emoticon.Emoticon;
 import diaryApplication.diary.domain.friend.Friend;
 import diaryApplication.diary.domain.member.Member;
@@ -56,15 +57,27 @@ public class MemberRepository {
 
         Member member = findById(id);
 
-        List<Friend> friends = em.createQuery("select f from Friend f where f.memberId_1=:memberId_1 or f.memberId_2=:memberId_2")
-                .setParameter("memberId_1",id)
-                .setParameter("memberId_2",member)
-                .getResultList();
-
-        for(Friend friend : friends){
-            em.remove(friend);
+        try{
+            List<Friend> friends = em.createQuery("select f from Friend f where f.memberId_1=:memberId_1 or f.memberId_2=:memberId_2")
+                    .setParameter("memberId_1",id)
+                    .setParameter("memberId_2",member)
+                    .getResultList();
+            for(Friend friend : friends){
+                em.remove(friend);
+            }
+        }catch (NoResultException e){
+            e.printStackTrace();
         }
-
+        try{
+            List<Diary> diaryList = em.createQuery("select d from Diary d where d.memberId=:memberId")
+                    .setParameter("memberId",member)
+                    .getResultList();
+            for(Diary diary : diaryList){
+                em.remove(diary);
+            }
+        }catch (NoResultException e){
+            e.printStackTrace();
+        }
         em.remove(findById(id));
     }
 

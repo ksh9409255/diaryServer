@@ -22,7 +22,8 @@ public class FriendController {
 
     @PostMapping("/friend/add")
     public ResponseEntity<Boolean> add(@RequestBody FriendAndroidDto friendAndroidDto, HttpServletRequest req) {
-        if(kakaoService.getUserInfo(req.getHeader("Authorization")).get("id").equals(String.valueOf(1860095703L))){
+        if(kakaoService.getUserInfo(req.getHeader("Authorization")).get("id")
+                .equals(String.valueOf(friendAndroidDto.getMemberId_1().getId()))){
             return friendService.add(friendAndroidDto);
         }
         else{

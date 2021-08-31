@@ -22,7 +22,7 @@ public class CategoryService {
     private final MemberRepository memberRepository;
 
     public void register(CategoryDto categoryDto){
-        Category category = new Category(categoryDto.getName());
+        Category category = new Category(categoryDto.getId(),categoryDto.getName());
         categoryRepository.save(category);
     }
 
