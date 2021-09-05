@@ -56,6 +56,9 @@ public class EmoticonService {
      */
     public List<EmoticonDto> findByCategoryId(int categoryId){
         List<Emoticon> emoticonList = emoticonRepository.findByCategoryId(categoryRepository.findById(categoryId));
+        if(emoticonList.size()==0){
+            return new ArrayList<>();
+        }
         List<EmoticonDto> emoticonDtos = new ArrayList<>();
         for(Emoticon emoticon : emoticonList){
             EmoticonDto emoticonDto = new EmoticonDto(emoticon.getId(),emoticon.getName(),

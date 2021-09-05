@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -29,10 +31,16 @@ public class EmoticonRepository {
     }
 
     public List<Emoticon> findByCategoryId(Category id){
-        return em.createQuery("select e from Emoticon e " +
-                "where e.categoryId=:id")
-                .setParameter("id",id)
-                .getResultList();
+        try{
+            List<Emoticon> emoticonList = em.createQuery("select e from Emoticon e " +
+                    "where e.categoryId=:id")
+                    .setParameter("id",id)
+                    .getResultList();
+            return emoticonList;
+        }catch (NoResultException e){
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
     }
 
     /**
