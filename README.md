@@ -12,8 +12,8 @@
 
 # 프로젝트 개요
 ![](https://images.velog.io/images/ksh9409255/post/b55798b9-fc9d-4e78-a70d-9056cfdecd15/%EA%B7%B8%EB%A6%BC2.png)
-![](https://images.velog.io/images/ksh9409255/post/2162e723-0506-434b-b758-539ce607c27b/%EA%B7%B8%EB%A6%BC3.png)
-![](https://images.velog.io/images/ksh9409255/post/f6f34f82-d7e1-42fb-acc1-b0c17e6f9295/%EA%B7%B8%EB%A6%BC4.png)
+![](https://images.velog.io/images/ksh9409255/post/71658f03-2ebe-461c-987a-1c5f0155c9f5/%EA%B7%B8%EB%A6%BC3.png)
+![](https://images.velog.io/images/ksh9409255/post/292f0868-2275-4e72-b1ff-0ce0786a7774/%EA%B7%B8%EB%A6%BC4.png)
 
 # 감정농장 어플리케이션 로고
 ![](https://images.velog.io/images/ksh9409255/post/e39d78a2-36f0-44d2-b9b8-49e3c72a76d5/%EB%A1%9C%EA%B3%A0%EC%83%98%ED%94%8Cver1%201%20(6).png)
