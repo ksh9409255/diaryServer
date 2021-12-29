@@ -26,7 +26,7 @@
 ![](https://images.velog.io/images/ksh9409255/post/82be6743-9042-4951-a6f5-577ecfcfb14e/%EA%B7%B8%EB%A6%BC6.png)
 
 # 제공 시스템 사양
-![](https://images.velog.io/images/ksh9409255/post/630fcd85-21c3-4a4a-adfb-d45c5713604d/%EA%B7%B8%EB%A6%BC7.png)
+![](https://images.velog.io/images/ksh9409255/post/86f76b65-593d-45bb-914d-4069ee44e1af/%EA%B7%B8%EB%A6%BC7.png)
 
 # 감정농장 어플리케이션 로고
 ![](https://images.velog.io/images/ksh9409255/post/e39d78a2-36f0-44d2-b9b8-49e3c72a76d5/%EB%A1%9C%EA%B3%A0%EC%83%98%ED%94%8Cver1%201%20(6).png)
