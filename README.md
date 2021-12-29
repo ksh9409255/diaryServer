@@ -19,6 +19,8 @@
 # 주제 선정 동기
 ![](https://images.velog.io/images/ksh9409255/post/a23e58b5-d5b3-41de-b7fe-8558bfdbcac9/%EA%B7%B8%EB%A6%BC5.png)
 <br/>
+
+
 ![](https://images.velog.io/images/ksh9409255/post/324626c8-0f95-43c1-95de-9ae9e8bd5718/%EA%B7%B8%EB%A6%BC6.png)
 
 # 감정농장 어플리케이션 로고
