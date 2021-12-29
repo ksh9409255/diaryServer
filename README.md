@@ -3,6 +3,12 @@
 감정농장은 자신의 일기를 공유하고, 공유된 다른 사람들의 일기를 읽을 수 있는 어플리케이션입니다.
 ![](https://images.velog.io/images/ksh9409255/post/f7b3241c-83bd-4e3c-b5fd-0121855d6bb5/Group%2010%20(2).png)
 
+# 개발 팀 정보
+* 팀장 : 김성환
+* 개발팀원 : 윤소정
+* 디자인팀원 : 권정인
+![](https://images.velog.io/images/ksh9409255/post/7c5e7720-d7e4-4541-b03b-834ff430eaa5/%EA%B7%B8%EB%A6%BC1.png)
+
 # 감정농장 어플리케이션 로고
 ![](https://images.velog.io/images/ksh9409255/post/e39d78a2-36f0-44d2-b9b8-49e3c72a76d5/%EB%A1%9C%EA%B3%A0%EC%83%98%ED%94%8Cver1%201%20(6).png)
 
