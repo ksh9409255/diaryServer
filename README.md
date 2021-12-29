@@ -7,7 +7,7 @@
 * 팀장 : 김성환
 * 개발팀원 : 윤소정
 * 디자인팀원 : 권정인
-* 
+
 ![](https://images.velog.io/images/ksh9409255/post/7c5e7720-d7e4-4541-b03b-834ff430eaa5/%EA%B7%B8%EB%A6%BC1.png)
 
 # 감정농장 어플리케이션 로고
