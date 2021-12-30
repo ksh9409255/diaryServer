@@ -30,6 +30,7 @@
 
 # 개발환경
 ![](https://images.velog.io/images/ksh9409255/post/3992bc5e-0515-48d9-b45c-f97f3592d844/%EA%B7%B8%EB%A6%BC1.png)
+![](https://images.velog.io/images/ksh9409255/post/3e722dde-374c-4d77-9c6e-632c1e89a1a7/%EA%B7%B8%EB%A6%BC2.png)
 
 # 감정농장 어플리케이션 로고
 ![](https://images.velog.io/images/ksh9409255/post/e39d78a2-36f0-44d2-b9b8-49e3c72a76d5/%EB%A1%9C%EA%B3%A0%EC%83%98%ED%94%8Cver1%201%20(6).png)
