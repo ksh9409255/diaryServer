@@ -36,6 +36,10 @@
 # 회원 이용 흐름
 ![](https://images.velog.io/images/ksh9409255/post/0fc4f2d9-1309-49e0-8ba2-58241fcb58d1/%EA%B7%B8%EB%A6%BC3.png)
 
+# 서비스 설계 및 소개
+1. DB설계
+![](https://images.velog.io/images/ksh9409255/post/874f1ae2-d5da-4acc-8454-84d11219bd2d/%EA%B7%B8%EB%A6%BC1.png)
+
 # 감정농장 어플리케이션 로고
 ![](https://images.velog.io/images/ksh9409255/post/e39d78a2-36f0-44d2-b9b8-49e3c72a76d5/%EB%A1%9C%EA%B3%A0%EC%83%98%ED%94%8Cver1%201%20(6).png)
 
