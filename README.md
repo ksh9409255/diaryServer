@@ -42,9 +42,14 @@
 
 2. 회원 가입
 * 카카오톡 로그인 API를 사용하여 회원 가입을 구현했습니다.
+* 카카오톡 로그인 API를 사용한 이유 : 자체 개발한 회원가입은 보안에 취약할 수 있기 때문에 카카오톡 API를 사용했습니다.
 ![](https://images.velog.io/images/ksh9409255/post/0b31d425-bc75-4358-aa17-746e98bdfa7e/%EA%B7%B8%EB%A6%BC2.png)
 
 3. 회원 관리
+* 자신이 선택한 농부 이모티콘 변경
+* 닉네임 변경
+* 회원 탈퇴
+![](https://images.velog.io/images/ksh9409255/post/d43f0fdf-206e-486e-8f9f-81bb8813e9fc/%EA%B7%B8%EB%A6%BC3.png)
 
 4. 자신의 일기 관리
 
