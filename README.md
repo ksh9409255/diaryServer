@@ -2,6 +2,7 @@
 ### 일기를 공유하고 싶은 사람들을 위한 어플리케이션
 감정농장은 자신의 일기를 공유하고, 공유된 다른 사람들의 일기를 읽을 수 있는 어플리케이션입니다.
 ![](https://images.velog.io/images/ksh9409255/post/f7b3241c-83bd-4e3c-b5fd-0121855d6bb5/Group%2010%20(2).png)
+안드로이드 : https://play.google.com/store/apps/details?id=com.foo.diary_android
 
 # 개발 팀 정보
 * 팀장 : 김성환
