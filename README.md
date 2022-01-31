@@ -40,6 +40,19 @@
 1. DB설계
 ![](https://images.velog.io/images/ksh9409255/post/874f1ae2-d5da-4acc-8454-84d11219bd2d/%EA%B7%B8%EB%A6%BC1.png)
 
+2. 회원 가입
+* 카카오톡 로그인 API를 사용하여 회원 가입을 구현했습니다.
+![](https://images.velog.io/images/ksh9409255/post/0b31d425-bc75-4358-aa17-746e98bdfa7e/%EA%B7%B8%EB%A6%BC2.png)
+
+3. 회원 관리
+
+4. 자신의 일기 관리
+
+5. 친구 관리 및 친구 일기 보기
+
+
+
+
 # 감정농장 어플리케이션 로고
 ![](https://images.velog.io/images/ksh9409255/post/e39d78a2-36f0-44d2-b9b8-49e3c72a76d5/%EB%A1%9C%EA%B3%A0%EC%83%98%ED%94%8Cver1%201%20(6).png)
 
