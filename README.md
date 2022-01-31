@@ -61,3 +61,7 @@
 ![](https://images.velog.io/images/ksh9409255/post/127dc4c1-9518-4c38-a7f8-b21d067ae28c/%EA%B7%B8%EB%A6%BC6.png)
 
 5. 친구 관리 및 친구 일기 보기
+* 친구 추가
+* 친구 일기 보기
+* 비공개 일기는 볼 수 없음
+![](https://images.velog.io/images/ksh9409255/post/4f1d44b0-34f4-4584-971a-6a393a3491c2/%EA%B7%B8%EB%A6%BC8.png)
