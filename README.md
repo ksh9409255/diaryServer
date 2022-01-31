@@ -52,6 +52,12 @@
 ![](https://images.velog.io/images/ksh9409255/post/d43f0fdf-206e-486e-8f9f-81bb8813e9fc/%EA%B7%B8%EB%A6%BC3.png)
 
 4. 자신의 일기 관리
+* 일기 쓰기
+* 일기 읽기
+* 일기 수정
+* 일기 삭제
+![](https://images.velog.io/images/ksh9409255/post/c8ad74c7-35ea-455a-9bf5-3c8aa62e3503/%EA%B7%B8%EB%A6%BC4.png)
+![](https://images.velog.io/images/ksh9409255/post/0060657d-b7e4-49dc-8c25-0447a9cb70e5/%EA%B7%B8%EB%A6%BC5.png)
 
 5. 친구 관리 및 친구 일기 보기
 
